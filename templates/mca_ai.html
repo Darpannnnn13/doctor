@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCA (AI) Cutoff Checker</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        body { 
+            background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%); 
+            color: #2d3748; 
+            min-height: 100vh; 
+            font-family: 'Segoe UI', sans-serif;
+        }
+        .glass-card { 
+            background: rgba(255, 255, 255, 0.85); 
+            backdrop-filter: blur(12px); 
+            border: 1px solid rgba(255, 255, 255, 0.9); 
+            border-radius: 24px; 
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        .glass-card:hover { 
+            transform: translateY(-10px) scale(1.02); 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1); 
+            border-color: #fff;
+        }
+        .form-field {
+            border: 1px solid #cbd5e0; border-radius: 12px; padding: 12px 16px;
+            font-size: 0.95rem; font-weight: 500; color: #2d3748; background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.04); transition: all 0.2s ease;
+        }
+        .form-field:focus { 
+            border-color: #4299e1; background-color: #fff; 
+            box-shadow: 0 0 0 4px rgba(66, 153, 225, 0.15); outline: none; 
+        }
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(8px);
+            display: none; justify-content: center; align-items: center; z-index: 1000;
+        }
+        .modal-content {
+            background: white; border-radius: 24px; width: 95%; max-width: 900px;
+            max-height: 85vh; overflow-y: auto; position: relative; padding: 2rem;
+        }
+    </style>
+</head>
+<body class="p-6">
+    <div class="max-w-7xl mx-auto">
+        <header class="flex justify-between items-center mb-10">
+            <div class="flex items-center gap-4">
+                <a href="/" class="bg-white/50 hover:bg-white p-2 rounded-full transition shadow-sm text-2xl" title="Back">⬅️</a>
+                <div>
+                    <h1 class="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-teal-500 drop-shadow-sm">
+                        MCA (AI Quota) Colleges
+                    </h1>
+                    <p class="text-gray-600 mt-1 text-lg font-medium">Round {{ selected_round }}</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Filters Section -->
+        <div class="glass-card p-8 mb-8">
+            <form id="filterForm" action="/colleges" method="GET" class="flex flex-wrap items-end gap-3">
+                <input type="hidden" name="department" value="MCA">
+                <input type="hidden" name="gender" value="AI">
+                <input type="hidden" name="round" value="{{ selected_round }}">
+                
+                <div class="flex-grow min-w-[300px]">
+                    <label class="block text-sm text-gray-600 font-bold mb-1">Search College</label>
+                    <input type="text" name="search" placeholder="e.g. College Name..." value="{{ request.args.get('search', '') }}" class="w-full form-field">
+                </div>
+                <div class="flex-grow min-w-[150px]">
+                    <label class="block text-sm text-gray-600 font-bold mb-1">Merit Marks</label>
+                    <input type="number" name="experience" min="0" placeholder="e.g. 100" value="{{ selected_experience }}" class="w-full form-field">
+                </div>
+            </form>
+        </div>
+
+        <!-- Grid -->
+        <div id="doctorsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {% for doctor in doctors %}
+            <div class="glass-card p-6 flex flex-col items-center text-center">
+                <div class="w-full h-40 rounded-xl bg-gradient-to-br from-blue-200 to-teal-200 mb-4 flex items-center justify-center">
+                    <span class="text-4xl">🏫</span>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 cursor-pointer hover:text-blue-600 transition" onclick="openDetailsModal(this.parentElement.querySelector('button'))">{{ doctor.name }}</h3>
+                
+                <div class="w-full mt-4 space-y-2 text-left px-2">
+                    <div class="flex justify-between border-b border-gray-100 pb-2">
+                        <span class="text-gray-500 text-xs font-bold uppercase">Merit Marks</span>
+                        <span class="text-green-600 font-extrabold text-sm">({{ doctor.experience }})</span>
+                    </div>
+                    {% if doctor.rank != 'N/A' %}
+                    <div class="flex justify-between border-b border-gray-100 pb-2">
+                        <span class="text-gray-500 text-xs font-bold uppercase">Rank</span>
+                        <span class="text-blue-600 font-bold text-sm">{{ doctor.rank }}</span>
+                    </div>
+                    {% endif %}
+                </div>
+
+                <button onclick="openDetailsModal(this)" data-doctor="{{ doctor | tojson | forceescape }}" class="w-full mt-4 py-3 bg-white border-2 border-blue-500 text-blue-600 hover:bg-blue-50 rounded-xl font-bold transition shadow-sm transform active:scale-95">
+                    More Details
+                </button>
+            </div>
+            {% else %}
+            <div class="col-span-full text-center py-10">
+                <p class="text-gray-600 text-xl">No colleges found.</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Details Modal -->
+    <div id="detailsModal" class="modal-overlay" onclick="if(event.target.id==='detailsModal') this.style.display='none'">
+        <div class="modal-content animate__animated animate__zoomIn">
+            <div class="relative h-40 bg-gradient-to-r from-blue-600 to-teal-400 flex items-end p-6 rounded-t-2xl -mx-8 -mt-8 mb-8">
+                <button onclick="document.getElementById('detailsModal').style.display='none'" class="absolute top-4 right-4 text-white text-4xl font-bold">&times;</button>
+                <h2 id="modalTitle" class="text-2xl font-bold text-white shadow-black/20 drop-shadow-md"></h2>
+            </div>
+            <div class="flex flex-col md:flex-row gap-6">
+                <div class="flex-1 grid grid-cols-2 gap-3">
+                    <div class="bg-blue-50 p-3 rounded-xl border border-blue-100">
+                        <span class="block text-blue-500 text-xs font-bold uppercase">Branch</span>
+                        <span id="modalSpecialty" class="text-sm font-bold text-gray-800"></span>
+                    </div>
+                    <div class="bg-green-50 p-3 rounded-xl border border-green-100">
+                        <span class="block text-green-500 text-xs font-bold uppercase">Merit Marks</span>
+                        <span id="modalCutoff" class="text-xl font-extrabold text-green-600"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100 mt-6">
+                <h3 class="text-lg font-bold text-gray-800 mb-4">📋 Admission Details</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-8 text-sm" id="modalAdditionalInfo"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openDetailsModal(btn) {
+            const doc = JSON.parse(btn.dataset.doctor);
+            document.getElementById('modalTitle').innerText = doc.name;
+            document.getElementById('modalSpecialty').innerText = doc.specialty;
+            document.getElementById('modalCutoff').innerText = `(${doc.experience})`;
+            
+            document.getElementById('modalAdditionalInfo').innerHTML = `
+                <div class="flex flex-col border-b border-gray-200 pb-2">
+                    <span class="text-gray-500 text-xs font-bold uppercase">Course Code</span>
+                    <span class="font-bold text-gray-800 text-lg">${doc.choice_code}</span>
+                </div>
+                <div class="flex flex-col border-b border-gray-200 pb-2">
+                    <span class="text-gray-500 text-xs font-bold uppercase">Institute Code</span>
+                    <span class="font-bold text-gray-800 text-lg">${doc.institute_code}</span>
+                </div>
+                ${doc.rank !== 'N/A' ? `
+                <div class="flex flex-col border-b border-gray-200 pb-2">
+                    <span class="text-gray-500 text-xs font-bold uppercase">Merit Rank</span>
+                    <span class="font-bold text-gray-800 text-lg">${doc.rank}</span>
+                </div>
+                ` : ''}
+                <div class="flex flex-col border-b border-gray-200 pb-2">
+                    <span class="text-gray-500 text-xs font-bold uppercase">Type</span>
+                    <span class="font-bold text-gray-800 text-lg">${doc.consultation_type}</span>
+                </div>
+                <div class="flex flex-col border-b border-gray-200 pb-2">
+                    <span class="text-gray-500 text-xs font-bold uppercase">Status</span>
+                    <span class="font-bold text-gray-800 text-lg">${doc.status}</span>
+                </div>
+            `;
+            document.getElementById('detailsModal').style.display = 'flex';
+        }
+        
+        // Real-time Search & Filter Logic
+        const form = document.getElementById('filterForm');
+        const inputs = form.querySelectorAll('input');
+        let debounceTimer;
+
+        inputs.forEach(input => {
+            input.addEventListener('input', () => {
+                clearTimeout(debounceTimer);
+                debounceTimer = setTimeout(async () => {
+                    const formData = new FormData(form);
+                    const params = new URLSearchParams(formData);
+                    try {
+                        const response = await fetch(`/colleges?${params.toString()}`);
+                        const text = await response.text();
+                        const parser = new DOMParser();
+                        const doc = parser.parseFromString(text, 'text/html');
+                        const newGrid = doc.getElementById('doctorsGrid');
+                        if (newGrid) document.getElementById('doctorsGrid').innerHTML = newGrid.innerHTML;
+                    } catch (err) { console.error(err); }
+                }, 300);
+            });
+        });
+    </script>
+</body>
+</html>
