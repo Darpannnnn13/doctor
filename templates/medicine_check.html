@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicine Identification - Camera</title>
+    <style>
+        :root {
+            --primary-color: #4facfe;
+            --secondary-color: #00f2fe;
+            --text-light: #f8f9fa;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+            color: var(--text-light);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 800px;
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            margin-bottom: 1rem;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 640px;
+            margin: 0 auto;
+            border-radius: 10px;
+            overflow: hidden;
+            background: #000;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+
+        video {
+            width: 100%;
+            display: block;
+        }
+
+        canvas {
+            display: none;
+        }
+
+        .controls {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 10px 25px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            color: white;
+        }
+
+        .btn-start { background: linear-gradient(135deg, #42e695, #3bb2b8); }
+        .btn-capture { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); }
+        .btn-stop { background: linear-gradient(135deg, #ff416c, #ff4b2b); }
+
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+        .btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            color: #ccc;
+            text-decoration: none;
+        }
+        .back-link:hover { color: white; }
+
+        #error-msg { color: #ff6b6b; margin-top: 10px; display: none; }
+
+        /* AI Results Section */
+        .results-panel {
+            margin-top: 20px;
+            text-align: left;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            border-radius: 10px;
+            display: none;
+        }
+        .result-item { margin-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 5px; }
+        .result-label { font-weight: bold; color: var(--secondary-color); }
+        .loading {
+            display: none;
+            margin-top: 15px;
+            font-style: italic;
+            color: var(--secondary-color);
+        }
+        .badge-safe { background-color: #28a745; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; }
+        .badge-warning { background-color: #ffc107; color: #000; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="glass-panel">
+            <h1>Identify Medicine</h1>
+            <p>Point your camera at the medicine to identify it.</p>
+            <div class="video-container">
+                <video id="video" autoplay playsinline></video>
+                <canvas id="canvas"></canvas>
+            </div>
+            <p id="error-msg"></p>
+            <div class="controls">
+                <button id="startBtn" class="btn btn-start" onclick="startCamera()">Start Camera</button>
+                <button id="captureBtn" class="btn btn-capture" onclick="captureImage()" disabled>Capture</button>
+                <button id="stopBtn" class="btn btn-stop" onclick="stopCamera()" disabled>Stop</button>
+            </div>
+            
+            <div id="loading" class="loading">Processing image with AI Models (CNN, YOLO, OCR)...</div>
+
+            <div id="result" style="margin-top: 20px; display:none;">
+                <h3>Captured Image:</h3>
+                <img id="captured-img" style="max-width: 100%; border-radius: 10px; border: 2px solid white; margin-bottom: 15px;">
+                
+                <div id="ai-results" class="results-panel">
+                    <h3>AI Analysis Report</h3>
+                    <div class="result-item">
+                        <span class="result-label">Identified (CNN):</span> <span id="res-name"></span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">Safety Check (Classification):</span> <span id="res-safety"></span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">Extracted Text (OCR):</span> <span id="res-ocr" style="font-size: 0.9rem; color: #ccc;"></span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">AI Explanation (NLP):</span> <p id="res-desc" style="margin: 5px 0;"></p>
+                    </div>
+                    <div class="result-item" id="db-info-row" style="display:none;">
+                        <span class="result-label">Pharmacy Details:</span> <p id="res-db-info" style="margin: 5px 0; color: #4facfe;"></p>
+                    </div>
+                    <div class="result-item" style="border:none;">
+                        <span class="result-label">Dosage (Rule-Based):</span> <p id="res-dosage" style="margin: 5px 0; color: #42e695;"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a href="/" class="back-link">← Back to Dashboard</a>
+    </div>
+    <script>
+        const video = document.getElementById('video');
+        const canvas = document.getElementById('canvas');
+        const startBtn = document.getElementById('startBtn');
+        const captureBtn = document.getElementById('captureBtn');
+        const stopBtn = document.getElementById('stopBtn');
+        const errorMsg = document.getElementById('error-msg');
+        const resultDiv = document.getElementById('result');
+        const capturedImg = document.getElementById('captured-img');
+        const loadingDiv = document.getElementById('loading');
+        const aiResultsDiv = document.getElementById('ai-results');
+        
+        // Result fields
+        const resName = document.getElementById('res-name');
+        const resSafety = document.getElementById('res-safety');
+        const resOcr = document.getElementById('res-ocr');
+        const resDesc = document.getElementById('res-desc');
+        const resDosage = document.getElementById('res-dosage');
+        const dbInfoRow = document.getElementById('db-info-row');
+        const resDbInfo = document.getElementById('res-db-info');
+
+        let stream = null;
+
+        async function startCamera() {
+            try {
+                stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } });
+                video.srcObject = stream;
+                startBtn.disabled = true;
+                captureBtn.disabled = false;
+                stopBtn.disabled = false;
+                errorMsg.style.display = 'none';
+                resultDiv.style.display = 'none';
+                aiResultsDiv.style.display = 'none';
+                video.style.display = 'block';
+            } catch (err) {
+                console.error("Error accessing camera: ", err);
+                errorMsg.textContent = "Could not access camera. Please allow permissions.";
+                errorMsg.style.display = 'block';
+            }
+        }
+
+        function stopCamera() {
+            if (stream) {
+                stream.getTracks().forEach(track => track.stop());
+                video.srcObject = null;
+                stream = null;
+                startBtn.disabled = false;
+                captureBtn.disabled = true;
+                stopBtn.disabled = true;
+            }
+        }
+
+        function captureImage() {
+            if (!stream) return;
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            const context = canvas.getContext('2d');
+            context.drawImage(video, 0, 0, canvas.width, canvas.height);
+            const dataURL = canvas.toDataURL('image/png');
+            capturedImg.src = dataURL;
+            resultDiv.style.display = 'block';
+            
+            // Send to Backend for AI Processing
+            sendToAI(dataURL);
+        }
+
+        async function sendToAI(imageData) {
+            loadingDiv.style.display = 'block';
+            aiResultsDiv.style.display = 'none';
+
+            try {
+                const response = await fetch('/identify_medicine', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ image: imageData })
+                });
+
+                const data = await response.json();
+                
+                if (data.success) {
+                    resName.textContent = `${data.medicine_name} (${(data.confidence * 100).toFixed(1)}%)`;
+                    resSafety.innerHTML = `<span class="badge-safe">${data.safety_status}</span>`;
+                    resOcr.textContent = data.ocr_text;
+                    resDesc.textContent = data.description;
+                    resDosage.textContent = data.dosage_recommendation;
+                    
+                    if (data.db_details && data.db_details.price) {
+                        resDbInfo.innerHTML = `Price: <strong>$${data.db_details.price}</strong> | Stock: ${data.db_details.stock} | Category: ${data.db_details.category}`;
+                        dbInfoRow.style.display = 'block';
+                    } else {
+                        dbInfoRow.style.display = 'none';
+                    }
+
+                    aiResultsDiv.style.display = 'block';
+                } else {
+                    alert("AI Processing Failed: " + data.error);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert("Failed to connect to server.");
+            } finally {
+                loadingDiv.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

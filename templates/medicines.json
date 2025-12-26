@@ -1,0 +1,37 @@
+[
+  {
+    "name": "Paracetamol 500mg",
+    "category": "Pain Relief",
+    "price": "5.00",
+    "description": "Effective for fever and mild pain relief.",
+    "stock_quantity": 100
+  },
+  {
+    "name": "Amoxicillin 250mg",
+    "category": "Antibiotics",
+    "price": "12.50",
+    "description": "Used to treat bacterial infections.",
+    "stock_quantity": 50
+  },
+  {
+    "name": "Cetirizine 10mg",
+    "category": "Allergy",
+    "price": "3.00",
+    "description": "Relieves allergy symptoms like runny nose and sneezing.",
+    "stock_quantity": 200
+  },
+  {
+    "name": "Ibuprofen 400mg",
+    "category": "Pain Relief",
+    "price": "6.00",
+    "description": "Anti-inflammatory drug for pain and swelling.",
+    "stock_quantity": 75
+  },
+  {
+    "name": "Vitamin C 500mg",
+    "category": "Supplements",
+    "price": "8.00",
+    "description": "Boosts immune system and skin health.",
+    "stock_quantity": 150
+  }
+]
