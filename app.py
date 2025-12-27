@@ -154,8 +154,14 @@ def colleges():
         # Extract Area from Institute Name (Format: "Name, Area")
         if 'institute_name' in df.columns:
             # Split by comma and take the last part as Area
-            df['area'] = df['institute_name'].astype(str).apply(lambda x: x.split(',')[-1].strip() if ',' in x else None)
-            unique_areas = sorted(df['area'].dropna().unique().tolist())
+            df['area'] = df['institute_name'].astype(str).apply(lambda x: x.split(',')[-1].strip() if ',' in x else 'Others')
+            unique_areas = sorted(df['area'].unique().tolist())
+            
+            # Move 'Others' to the end
+            if 'Others' in unique_areas:
+                unique_areas.remove('Others')
+                unique_areas.append('Others')
+
             if unique_areas:
                 areas = unique_areas
     else:
