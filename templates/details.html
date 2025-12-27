@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ info.name }} - Cutoff Details</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
+        <div class="container">
+            <a class="navbar-brand" href="/">🎓 Cutoff Explorer</a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="javascript:history.back()">Back</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="card mb-4">
+            <div class="card-body">
+                <h2 class="card-title text-primary">{{ info.name }}</h2>
+                <h6 class="card-subtitle mb-2 text-muted">Institute Code: {{ info.code }}</h6>
+                <p class="card-text"><strong>University:</strong> {{ info.university }}</p>
+            </div>
+        </div>
+
+        <h4 class="mb-3">Cutoff Details</h4>
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+                <thead class="table-light">
+                    <tr>
+                        <th>Course</th>
+                        <th>Category</th>
+                        <th>Seat Type</th>
+                        <th>Percentile</th>
+                        <th>Merit Rank</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in cutoffs %}
+                    <tr>
+                        <td>{{ row.course_name }}</td>
+                        <td>{{ row.category }}</td>
+                        <td>{{ row.seat_type }}</td>
+                        <td class="text-success fw-bold">{{ row.percentile }}</td>
+                        <td class="text-danger fw-bold">{{ row.rank }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

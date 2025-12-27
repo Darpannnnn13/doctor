@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCA (MH) Cutoff Checker</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        body { 
+            background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%); 
+            color: #2d3748; 
+            min-height: 100vh; 
+            font-family: 'Segoe UI', sans-serif;
+        }
+        .glass-card { 
+            background: rgba(255, 255, 255, 0.85); 
+            backdrop-filter: blur(12px); 
+            border: 1px solid rgba(255, 255, 255, 0.9); 
+            border-radius: 24px; 
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        .glass-card:hover { 
+            transform: translateY(-10px) scale(1.02); 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1); 
+            border-color: #fff;
+        }
+        .form-field {
+            border: 1px solid #cbd5e0; border-radius: 12px; padding: 12px 16px;
+            font-size: 0.95rem; font-weight: 500; color: #2d3748; background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.04); transition: all 0.2s ease;
+        }
+        .form-field:focus { 
+            border-color: #4299e1; background-color: #fff; 
+            box-shadow: 0 0 0 4px rgba(66, 153, 225, 0.15); outline: none; 
+        }
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(8px);
+            display: none; justify-content: center; align-items: center; z-index: 1000;
+        }
+        .modal-content {
+            background: white; border-radius: 24px; width: 95%; max-width: 900px;
+            max-height: 85vh; overflow-y: auto; position: relative; padding: 2rem;
+        }
+        .area-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 1rem;
+        }
+        .area-item {
+            background: #ffffff; padding: 1.5rem; border-radius: 20px;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            gap: 0.75rem; text-align: center;
+            cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+        .area-item:hover {
+            border-color: #4299e1; transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(66, 153, 225, 0.15);
+        }
+        .area-item.active { border-color: #4299e1; background: #ebf8ff; }
+        .area-item .icon { font-size: 2.5rem; margin-bottom: 0.25rem; }
+        .area-item .text { font-weight: 700; font-size: 1rem; color: #2d3748; line-height: 1.2; }
+
+    </style>
+</head>
+<body class="p-6">
+    <div class="max-w-7xl mx-auto">
+        <header class="flex justify-between items-center mb-10">
+            <div class="flex items-center gap-4">
+                <a href="/" class="bg-white/50 hover:bg-white p-2 rounded-full transition shadow-sm text-2xl" title="Back">⬅️</a>
+                <div>
+                    <h1 class="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-teal-500 drop-shadow-sm">
+                        MCA (MH Quota) Colleges
+                    </h1>
+                    <p class="text-gray-600 mt-1 text-lg font-medium">Round {{ selected_round }}</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Filters Section -->
+        <div class="glass-card p-8 mb-8">
+            <form id="filterForm" action="/colleges" method="GET" class="flex flex-wrap md:flex-nowrap items-end gap-4">
+                <input type="hidden" name="department" value="MCA">
+                <input type="hidden" name="round" value="{{ selected_round }}">
+                
+                <!-- Search -->
+                <div class="flex-grow w-full">
+                    <label class="block text-sm text-gray-600 font-bold mb-1">Institute Name</label>
+                    <input type="text" name="search" placeholder="e.g. Institute Name..." value="{{ request.args.get('search', '') }}" class="w-full form-field">
+                </div>
+
+                <!-- Area Filter -->
+                <div class="w-full md:w-48 flex-shrink-0">
+                    <label class="block text-sm text-gray-600 font-bold mb-1">Area</label>
+                    <input type="hidden" name="area" id="areaInput" value="{{ request.args.get('area', '') }}">
+                    <button type="button" onclick="openAreaModal()" class="w-full form-field text-left flex justify-between items-center bg-white hover:border-blue-400 transition">
+                        <span id="areaBtnText" class="truncate">{{ request.args.get('area') or 'Select Area' }}</span>
+                        <span class="text-gray-400">▾</span>
+                    </button>
+                </div>
+
+                <!-- Gender (Quota) -->
+                <div class="w-full md:w-64 flex-shrink-0">
+                    <label class="block text-sm text-gray-600 font-bold mb-1">Gender (Quota)</label>
+                    <select name="gender" class="w-full form-field">
+                        <option value="">All Quotas</option>
+                        {% for q in quotas %}
+                        <option value="{{ q }}" {% if request.args.get('gender') == q %}selected{% endif %}>{{ q }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <!-- Category -->
+                <div class="w-full md:w-48 flex-shrink-0">
+                    <label class="block text-sm text-gray-600 font-bold mb-1">Category</label>
+                    <select name="category" class="w-full form-field">
+                        <option value="">All Categories</option>
+                        {% for cat in categories %}
+                        <option value="{{ cat }}" {% if selected_category == cat %}selected{% endif %}>{{ cat }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <!-- Percentile -->
+                <div class="w-full md:w-32 flex-shrink-0">
+                    <label class="block text-sm text-gray-600 font-bold mb-1">Percentile</label>
+                    <input type="number" step="0.01" min="0" name="experience" placeholder="e.g. 85.50" value="{{ selected_experience }}" class="w-full form-field">
+                </div>
+            </form>
+        </div>
+
+        <!-- Grid -->
+        <div id="doctorsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {% for doctor in doctors %}
+            <div class="glass-card p-6 flex flex-col items-center text-center">
+                <div class="w-full h-40 rounded-xl bg-gradient-to-br from-blue-200 to-teal-200 mb-4 flex items-center justify-center">
+                    <span class="text-4xl">🏫</span>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 cursor-pointer hover:text-blue-600 transition" onclick="openDetailsModal(this.parentElement.querySelector('button'))">{{ doctor.name }}</h3>
+                
+                <div class="w-full mt-4 space-y-2 text-left px-2">
+                    <div class="flex justify-between border-b border-gray-100 pb-2">
+                        <span class="text-gray-500 text-xs font-bold uppercase">Percentile</span>
+                        <span class="text-green-600 font-extrabold text-sm">{{ doctor.percentile }}</span>
+                    </div>
+                    <div class="flex justify-between border-b border-gray-100 pb-2">
+                        <span class="text-gray-500 text-xs font-bold uppercase">Status</span>
+                        <span class="text-gray-800 font-semibold text-sm">{{ doctor.status }}</span>
+                    </div>
+                </div>
+
+                <button onclick="openDetailsModal(this)" data-doctor="{{ doctor | tojson | forceescape }}" class="w-full mt-4 py-3 bg-white border-2 border-blue-500 text-blue-600 hover:bg-blue-50 rounded-xl font-bold transition shadow-sm transform active:scale-95">
+                    More Details
+                </button>
+            </div>
+            {% else %}
+            <div class="col-span-full text-center py-10">
+                {% if not request.args.get('area') %}
+                <p class="text-gray-600 text-xl font-bold">👈 Please select an Area to view colleges.</p>
+                {% else %}
+                <p class="text-gray-600 text-xl">No colleges found matching your criteria.</p>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Area Selection Modal -->
+    <div id="areaModal" class="modal-overlay" onclick="closeAreaModal(event)">
+        <div class="modal-content animate__animated animate__zoomIn">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold text-gray-800">Choose Area</h2>
+                <button onclick="document.getElementById('areaModal').style.display='none'" class="text-gray-400 hover:text-gray-600 text-3xl">&times;</button>
+            </div>
+            
+            <div class="mb-4">
+                <input type="text" id="areaSearch" onkeyup="filterAreas()" placeholder="Search areas..." class="w-full form-field">
+            </div>
+
+            <div class="area-grid">
+                <div class="area-item {{ 'active' if not request.args.get('area') }}" onclick="selectArea('')">
+                    <div class="icon">📍</div>
+                    <div class="text">All Areas</div>
+                </div>
+                {% for area in areas %}
+                <div class="area-item {{ 'active' if request.args.get('area') == area }}" onclick="selectArea('{{ area }}')">
+                    <div class="icon">🏙️</div> 
+                    <div class="text">{{ area }}</div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Details Modal -->
+    <div id="detailsModal" class="modal-overlay" onclick="if(event.target.id==='detailsModal') this.style.display='none'">
+        <div class="modal-content animate__animated animate__zoomIn">
+            <div class="relative h-40 bg-gradient-to-r from-blue-600 to-teal-400 flex items-end p-6 rounded-t-2xl -mx-8 -mt-8 mb-8">
+                <button onclick="document.getElementById('detailsModal').style.display='none'" class="absolute top-4 right-4 text-white text-4xl font-bold">&times;</button>
+                <h2 id="modalTitle" class="text-2xl font-bold text-white shadow-black/20 drop-shadow-md"></h2>
+            </div>
+            <div class="flex flex-col md:flex-row gap-6">
+                <div class="flex-1 grid grid-cols-2 gap-3">
+                    <div class="bg-blue-50 p-3 rounded-xl border border-blue-100">
+                        <span class="block text-blue-500 text-xs font-bold uppercase">University</span>
+                        <span id="modalUniversity" class="text-sm font-bold text-gray-800"></span>
+                    </div>
+                    <div class="bg-green-50 p-3 rounded-xl border border-green-100">
+                        <span class="block text-green-500 text-xs font-bold uppercase">Percentile</span>
+                        <span id="modalCutoff" class="text-xl font-extrabold text-green-600"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100 mt-6">
+                <h3 class="text-lg font-bold text-gray-800 mb-4">📋 Admission Details</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-8 text-sm" id="modalAdditionalInfo"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Area Modal Logic
+        function openAreaModal() {
+            document.getElementById('areaModal').style.display = 'flex';
+        }
+
+        function closeAreaModal(e) {
+            if (e.target.id === 'areaModal') {
+                document.getElementById('areaModal').style.display = 'none';
+            }
+        }
+
+        function selectArea(areaName) {
+            document.getElementById('areaInput').value = areaName;
+            document.getElementById('areaBtnText').innerText = areaName || 'Select Area';
+            document.getElementById('areaModal').style.display = 'none';
+            // Trigger filter update
+            const event = new Event('input', { bubbles: true });
+            document.getElementById('areaInput').dispatchEvent(event);
+        }
+
+        function filterAreas() {
+            const input = document.getElementById('areaSearch');
+            const filter = input.value.toLowerCase();
+            const items = document.getElementsByClassName('area-item');
+
+            for (let i = 0; i < items.length; i++) {
+                const textDiv = items[i].getElementsByClassName("text")[0];
+                if (textDiv) {
+                    const txtValue = textDiv.textContent || textDiv.innerText;
+                    items[i].style.display = txtValue.toLowerCase().indexOf(filter) > -1 ? "" : "none";
+                }
+            }
+        }
+
+        function openDetailsModal(btn) {
+            const doc = JSON.parse(btn.dataset.doctor);
+            document.getElementById('modalTitle').innerText = doc.name;
+            document.getElementById('modalUniversity').innerText = doc.university;
+            document.getElementById('modalCutoff').innerText = doc.percentile;
+            
+            document.getElementById('modalAdditionalInfo').innerHTML = `
+                <div class="flex flex-col border-b border-gray-200 pb-2">
+                    <span class="text-gray-500 text-xs font-bold uppercase">Branch Code</span>
+                    <span class="font-bold text-gray-800 text-lg">${doc.choice_code || 'N/A'}</span>
+                </div>
+                <div class="flex flex-col border-b border-gray-200 pb-2">
+                    <span class="text-gray-500 text-xs font-bold uppercase">Institute Code</span>
+                    <span class="font-bold text-gray-800 text-lg">${doc.institute_code}</span>
+                </div>
+                <div class="flex flex-col border-b border-gray-200 pb-2">
+                    <span class="text-gray-500 text-xs font-bold uppercase">Merit Rank</span>
+                    <span class="font-bold text-gray-800 text-lg">${doc.merit_score}</span>
+                </div>
+                <div class="flex flex-col border-b border-gray-200 pb-2">
+                    <span class="text-gray-500 text-xs font-bold uppercase">Category</span>
+                    <span class="font-bold text-gray-800 text-lg">${doc.qualification}</span>
+                </div>
+                <div class="flex flex-col border-b border-gray-200 pb-2">
+                    <span class="text-gray-500 text-xs font-bold uppercase">Seat Type</span>
+                    <span class="font-bold text-gray-800 text-lg">${doc.consultation_type}</span>
+                </div>
+                <div class="flex flex-col border-b border-gray-200 pb-2">
+                    <span class="text-gray-500 text-xs font-bold uppercase">Quota</span>
+                    <span class="font-bold text-gray-800 text-lg">${doc.gender || 'N/A'}</span>
+                </div>
+                <div class="flex flex-col border-b border-gray-200 pb-2">
+                    <span class="text-gray-500 text-xs font-bold uppercase">Status</span>
+                    <span class="font-bold text-gray-800 text-lg">${doc.status || 'N/A'}</span>
+                </div>
+                <div class="flex flex-col border-b border-gray-200 pb-2">
+                    <span class="text-gray-500 text-xs font-bold uppercase">Branch</span>
+                    <span class="font-bold text-gray-800 text-lg">${doc.specialty || 'N/A'}</span>
+                </div>
+            `;
+            document.getElementById('detailsModal').style.display = 'flex';
+        }
+    </script>
+
+    <script>
+        // Real-time Search & Filter Logic
+        const form = document.getElementById('filterForm');
+        const inputs = form.querySelectorAll('input, select');
+        let debounceTimer;
+
+        inputs.forEach(input => {
+            input.addEventListener('input', () => {
+                clearTimeout(debounceTimer);
+                debounceTimer = setTimeout(async () => {
+                    const formData = new FormData(form);
+                    const params = new URLSearchParams(formData);
+                    try {
+                        const response = await fetch(`/colleges?${params.toString()}`);
+                        const text = await response.text();
+                        const parser = new DOMParser();
+                        const doc = parser.parseFromString(text, 'text/html');
+                        const newGrid = doc.getElementById('doctorsGrid');
+                        if (newGrid) document.getElementById('doctorsGrid').innerHTML = newGrid.innerHTML;
+                    } catch (err) { console.error(err); }
+                }, 300);
+            });
+        });
+    </script>
+</body>
+</html>

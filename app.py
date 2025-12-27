@@ -21,10 +21,22 @@ def colleges():
     if dept_filter == 'MCA':
         if location_filter == 'AI':
             subfolder = 'AI'
-            csv_filename = f'PG_MCA_Diploma_CAP{round_filter}_AI_Cutoff_2025_26_colab_extracted.csv'
+            csv_filename = f'PG_MCA_Diploma_CAP{round_filter}_AI_Cutoff_2025_26_cleaned.csv'
         else:
             subfolder = 'MH'
-            csv_filename = f'PG_MCA_CAP{round_filter}_Cuttoff_data.csv'
+            # Try both spellings for Cutoff/Cuttoff
+            filenames_to_try = [
+                f'PG_MCA_CAP{round_filter}_Cuttoff_data.csv',
+                f'PG_MCA_CAP{round_filter}_Cutoff_data.csv'
+            ]
+            
+            # Check which file exists
+            csv_filename = filenames_to_try[0] # Default
+            for fname in filenames_to_try:
+                if os.path.exists(os.path.join(base_dir, 'data', 'mca', subfolder, fname)):
+                    csv_filename = fname
+                    break
+            
         csv_path = os.path.join(base_dir, 'data', 'mca', subfolder, csv_filename)
     else:
         csv_filename = f'polytechnic_cutoff_data_cap_{round_filter}.csv'
@@ -37,6 +49,9 @@ def colleges():
     specialties = []
     categories = []
     seat_types = []
+    universities = []
+    quotas = []
+    areas = []
     
     if os.path.exists(csv_path):
         try:
@@ -56,6 +71,8 @@ def colleges():
                 df['percentile'] = df['score']
             elif 'merit' in df.columns:
                 df['percentile'] = df['merit']
+            elif 'marks_percentile' in df.columns:
+                df['percentile'] = df['marks_percentile']
             else:
                 df['percentile'] = 0.0 # Fallback to prevent KeyError
 
@@ -70,10 +87,23 @@ def colleges():
                 df['rank'] = df['merit_no']
             elif 'merit_rank' in df.columns:
                 df['rank'] = df['merit_rank']
+            elif 'merit_score' in df.columns:
+                df['rank'] = df['merit_score']
 
         # Handle Institution Name aliases (AI files)
         if 'institute_name' not in df.columns and 'institution_name' in df.columns:
             df['institute_name'] = df['institution_name']
+        
+        # Handle MH file specific column names
+        if 'institute_name' not in df.columns:
+            if 'name_of_institute' in df.columns:
+                df['institute_name'] = df['name_of_institute']
+            elif 'college_name' in df.columns:
+                df['institute_name'] = df['college_name']
+            elif 'institute' in df.columns:
+                df['institute_name'] = df['institute']
+            elif 'name' in df.columns:
+                df['institute_name'] = df['name']
 
         # Handle Seat Type aliases (AI files)
         if 'seat_type' not in df.columns and 'type' in df.columns:
@@ -82,6 +112,10 @@ def colleges():
         # Handle Choice Code as Institute Code (User specified)
         if 'institute_code' not in df.columns and 'choice_code' in df.columns:
             df['institute_code'] = df['choice_code']
+            
+        # Handle Branch Code alias
+        if 'choice_code' not in df.columns and 'branch_code' in df.columns:
+            df['choice_code'] = df['branch_code']
 
         # Ensure numeric columns are actually numbers
         if 'percentile' in df.columns:
@@ -104,6 +138,26 @@ def colleges():
             seats = sorted(df['seat_type'].dropna().unique().tolist())
             if seats:
                 seat_types = seats
+        
+        # Get unique universities (for MH)
+        if 'university' in df.columns:
+            unis = sorted(df['university'].dropna().unique().tolist())
+            if unis:
+                universities = unis
+        
+        # Get unique quotas
+        if 'quota' in df.columns:
+            qs = sorted(df['quota'].dropna().unique().tolist())
+            if qs:
+                quotas = qs
+        
+        # Extract Area from Institute Name (Format: "Name, Area")
+        if 'institute_name' in df.columns:
+            # Split by comma and take the last part as Area
+            df['area'] = df['institute_name'].astype(str).apply(lambda x: x.split(',')[-1].strip() if ',' in x else None)
+            unique_areas = sorted(df['area'].dropna().unique().tolist())
+            if unique_areas:
+                areas = unique_areas
     else:
         print("DEBUG: CSV file not found!")
         df = pd.DataFrame()
@@ -111,26 +165,37 @@ def colleges():
     # Filtering Logic
     search_query = request.args.get('search', '').lower()
     specialty_filter = request.args.get('specialty', '')
-    cutoff_filter = request.args.get('experience', '') # Using experience field for Cutoff
-    rank_filter = request.args.get('rank', '')
+    cutoff_filter = request.args.get('experience', '') or request.args.get('percentile', '') # Using experience field for Cutoff
+    rank_filter = request.args.get('rank', '') or request.args.get('merit_score', '')
     category_filter = request.args.get('category', '')
     seat_type_filter = request.args.get('seat_type', '')
+    university_filter = request.args.get('university', '')
+    area_filter = request.args.get('area', '')
 
-    # Determine if we should load data (MCA AI allows loading without specialty)
-    is_mca_ai = (dept_filter == 'MCA' and location_filter == 'AI')
+    # Determine if we should load data (MCA allows loading without specialty)
+    is_mca = (dept_filter == 'MCA')
     
-    if (specialty_filter or is_mca_ai) and not df.empty:
+    if (specialty_filter or is_mca) and not df.empty:
         # Filter by Branch (Exact Match)
         temp_df = df
         if specialty_filter:
             temp_df = temp_df[temp_df['course_name'] == specialty_filter]
 
         # Filter by Search (Institute Name)
-        if search_query:
+        if search_query and 'institute_name' in temp_df.columns:
             temp_df = temp_df[temp_df['institute_name'].str.lower().str.contains(search_query, na=False)]
+            
+        # Filter by Area
+        if area_filter and 'area' in temp_df.columns:
+            temp_df = temp_df[temp_df['area'] == area_filter]
+
+        # Enforce Area selection for MCA MH (Don't show colleges until Area is selected)
+        if dept_filter == 'MCA' and location_filter != 'AI' and not area_filter:
+            temp_df = temp_df.iloc[0:0]
 
         # Filter by Quota (Location)
-        if location_filter and 'quota' in temp_df.columns:
+        # Ignore 'MH' as it is used for file selection, not row filtering
+        if location_filter and location_filter != 'MH' and 'quota' in temp_df.columns:
             temp_df = temp_df[temp_df['quota'].str.contains(location_filter, na=False)]
 
         # Filter by Cutoff (Percentile)
@@ -160,6 +225,10 @@ def colleges():
         if seat_type_filter and 'seat_type' in temp_df.columns:
             temp_df = temp_df[temp_df['seat_type'] == seat_type_filter]
         
+        # Filter by University
+        if university_filter and 'university' in temp_df.columns:
+            temp_df = temp_df[temp_df['university'] == university_filter]
+        
         # Sort by percentile descending
         if 'percentile' in temp_df.columns:
             temp_df = temp_df.sort_values(by='percentile', ascending=False)
@@ -175,15 +244,21 @@ def colleges():
                 "gender": row.get('quota', location_filter if location_filter else 'N/A'), # Quota/Location
                 "qualification": row.get('category', 'N/A'),     # Category
                 "consultation_type": row.get('seat_type', 'N/A'),# Seat Type
-                "status": row.get('status', 'N/A'),
                 "rank": row.get('rank', 'N/A'),
                 "stage": row.get('stage', 'N/A'),
-                "image": "" # Placeholder
+                "image": "", # Placeholder
+                "percentile": row.get('percentile', 'N/A'),
+                "merit_score": row.get('rank', 'N/A'),
+                "university": row.get('university', 'N/A'),
+                "status": row.get('status', 'N/A')
             })
 
     # Render specific template for MCA AI, otherwise standard template
-    if dept_filter == 'MCA' and location_filter == 'AI':
-        template_name = 'mca_ai.html'
+    if dept_filter == 'MCA':
+        if location_filter == 'AI':
+            template_name = 'mca_ai.html'
+        else:
+            template_name = 'mca_mh.html'
     else:
         template_name = 'doctors.html'
 
@@ -192,6 +267,9 @@ def colleges():
                            specialties=specialties,
                            categories=categories,
                            seat_types=seat_types,
+                           universities=universities,
+                           quotas=quotas,
+                           areas=areas,
                            selected_specialty=specialty_filter,
                            selected_department=dept_filter,
                            selected_gender=location_filter,
@@ -199,7 +277,80 @@ def colleges():
                            selected_rank=rank_filter,
                            selected_category=category_filter,
                            selected_seat_type=seat_type_filter,
+                           selected_university=university_filter,
+                           selected_area=area_filter,
                            selected_round=round_filter)
+
+@app.route('/details')
+def details():
+    dept_filter = request.args.get('department', 'MCA')
+    round_filter = request.args.get('round', '1')
+    location_filter = request.args.get('gender', '')
+    institute_code = request.args.get('code')
+
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    
+    if dept_filter == 'MCA':
+        if location_filter == 'AI':
+            subfolder = 'AI'
+            csv_filename = f'PG_MCA_Diploma_CAP{round_filter}_AI_Cutoff_2025_26_cleaned.csv'
+        else:
+            subfolder = 'MH'
+            # Try both spellings for Cutoff/Cuttoff
+            filenames_to_try = [
+                f'PG_MCA_CAP{round_filter}_Cuttoff_data.csv',
+                f'PG_MCA_CAP{round_filter}_Cutoff_data.csv'
+            ]
+            
+            # Check which file exists
+            csv_filename = filenames_to_try[0] # Default
+            for fname in filenames_to_try:
+                if os.path.exists(os.path.join(base_dir, 'data', 'mca', subfolder, fname)):
+                    csv_filename = fname
+                    break
+        csv_path = os.path.join(base_dir, 'data', 'mca', subfolder, csv_filename)
+    else:
+        csv_filename = f'polytechnic_cutoff_data_cap_{round_filter}.csv'
+        csv_path = os.path.join(base_dir, 'data', 'polytechnic', csv_filename)
+
+    college_details = []
+    college_info = {}
+
+    if os.path.exists(csv_path):
+        try:
+            df = pd.read_csv(csv_path, encoding='utf-8')
+        except UnicodeDecodeError:
+            df = pd.read_csv(csv_path, encoding='cp1252')
+
+        df.columns = df.columns.str.strip().str.lower().str.replace(' ', '_').str.replace('-', '_')
+        
+        # Handle Aliases
+        if 'institute_code' not in df.columns and 'choice_code' in df.columns:
+            df['institute_code'] = df['choice_code']
+        
+        if 'percentile' not in df.columns:
+            if 'merit_marks' in df.columns: df['percentile'] = df['merit_marks']
+            elif 'score' in df.columns: df['percentile'] = df['score']
+            elif 'marks_percentile' in df.columns: df['percentile'] = df['marks_percentile']
+            
+        if 'rank' not in df.columns:
+            if 'merit_no' in df.columns: df['rank'] = df['merit_no']
+            elif 'merit_score' in df.columns: df['rank'] = df['merit_score']
+
+        if 'institute_code' in df.columns and institute_code:
+            df['institute_code'] = df['institute_code'].astype(str).str.replace(r'\.0$', '', regex=True)
+            match = df[df['institute_code'] == str(institute_code)]
+            
+            if not match.empty:
+                college_details = match.to_dict('records')
+                first_row = match.iloc[0]
+                college_info = {
+                    "code": first_row.get('institute_code'),
+                    "name": first_row.get('institute_name', first_row.get('institution_name', 'Unknown')),
+                    "university": first_row.get('university', 'N/A')
+                }
+
+    return render_template('details.html', info=college_info, cutoffs=college_details)
 
 if __name__ == '__main__':
     app.run(debug=True)
