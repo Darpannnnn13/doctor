@@ -4,9 +4,9 @@ import os
 
 # Define base directory relative to this script
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-DATA_DIR = os.path.join(BASE_DIR, "data", "mca", "AI")
+DATA_DIR = os.path.join(BASE_DIR, "data", "bca", "AI")
 
-COMBINED_COL = "Merit (Score)"
+COMBINED_COL = "All India Merit"
 
 def split_merit_score(value):
     if pd.isna(value):
@@ -16,16 +16,25 @@ def split_merit_score(value):
     numbers = re.findall(r"\d+\.\d+|\d+", str(value))
 
     if len(numbers) >= 2:
-        merit_rank = int(numbers[0])
-        score_percentile = float(numbers[1])
+        # Value outside bracket is Merit Score (Rank), Value inside is Percentile
+        # e.g. 1234(98.5) -> numbers=['1234', '98.5']
+        try:
+            merit_rank = int(numbers[0])
+            score_percentile = float(numbers[1])
+        except ValueError:
+            merit_rank, score_percentile = None, None
     elif len(numbers) == 1:
-        merit_rank = int(numbers[0])
-        score_percentile = None
+        try:
+            merit_rank = int(numbers[0])
+            score_percentile = None
+        except ValueError:
+            merit_rank, score_percentile = None, None
     else:
         merit_rank, score_percentile = None, None
 
     return pd.Series([merit_rank, score_percentile])
 
+<<<<<<< HEAD
 # Process CAP rounds 1 to 4
 for i in range(1, 5):
     input_filename = f"PG_MCA_Diploma_CAP{i}_AI_Cutoff_2025_26_colab_extracted.csv"
@@ -83,3 +92,31 @@ for i in range(1, 5):
             print(f"✅ Saved: {output_filename}")
         except PermissionError:
             print(f"❌ Permission denied: {output_filename} is open.")
+=======
+# Process all CSV files in the BCA AI directory
+if os.path.exists(DATA_DIR):
+    for filename in os.listdir(DATA_DIR):
+        # Match cap1.csv, cap2.csv etc. or other patterns
+        if filename.endswith(".csv") and "cleaned" not in filename and "cap" in filename.lower():
+            file_path = os.path.join(DATA_DIR, filename)
+            print(f"Processing: {filename}")
+            
+            try:
+                df = pd.read_csv(file_path)
+                
+                if COMBINED_COL in df.columns:
+                    print(f"Found column '{COMBINED_COL}', splitting...")
+                    df[["rank", "percentile"]] = df[COMBINED_COL].apply(split_merit_score)
+                    
+                    output_filename = filename.replace(".csv", "_cleaned.csv")
+                    output_path = os.path.join(DATA_DIR, output_filename)
+                    df.to_csv(output_path, index=False)
+                    print(f"✅ Saved: {output_filename}")
+                else:
+                    print(f"⚠️ Column '{COMBINED_COL}' not found in {filename}")
+            
+            except Exception as e:
+                print(f"❌ Error processing {filename}: {e}")
+else:
+    print(f"Directory not found: {DATA_DIR}")
+>>>>>>> daafe13 (bca)

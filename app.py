@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 import pandas as pd
 import os
+import re
 
 app = Flask(__name__)
 
@@ -47,6 +48,7 @@ def colleges():
             csv_filename = f'MBA_CAP{round_filter}_MHCutOff_2023_24 - MBA_CAP{round_filter}_MHCutOff_2023_24.csv'
             
         csv_path = os.path.join(base_dir, 'data', 'mba', subfolder, csv_filename)
+<<<<<<< HEAD
     elif dept_filter == 'MTECH':
         # Only load data if round is explicitly selected
         if request.args.get('round') is None:
@@ -54,6 +56,33 @@ def colleges():
         else:
             csv_filename = f'cap{round_filter}.csv'
             csv_path = os.path.join(base_dir, 'data', 'MTECH_ME', csv_filename)
+=======
+    elif dept_filter == 'BCA':
+        if location_filter == 'AI':
+            subfolder = 'AI'
+        else:
+            subfolder = 'MH'
+            
+        search_dir = os.path.join(base_dir, 'data', 'bca', subfolder)
+        csv_filename = f'cap{round_filter}.csv' # Default fallback for AI
+        
+        if os.path.exists(search_dir):
+            # Try to find file matching CAP round
+            for fname in os.listdir(search_dir):
+                # Match 'cap1', 'CAP1', 'BCA_CAP1', etc.
+                if fname.endswith('.csv') and f'cap{round_filter}' in fname.lower():
+                    csv_filename = fname
+                    break
+            
+            # Fallback: If specific round file not found, take the first CSV found
+            if not os.path.exists(os.path.join(search_dir, csv_filename)):
+                for fname in os.listdir(search_dir):
+                    if fname.endswith('.csv'):
+                        csv_filename = fname
+                        break
+        
+        csv_path = os.path.join(search_dir, csv_filename)
+>>>>>>> daafe13 (bca)
     else:
         csv_filename = f'polytechnic_cutoff_data_cap_{round_filter}.csv'
         csv_path = os.path.join(base_dir, 'data', 'polytechnic', csv_filename)
@@ -79,6 +108,22 @@ def colleges():
         df.columns = df.columns.str.strip().str.lower().str.replace(' ', '_').str.replace('-', '_')
         print(f"DEBUG: Columns found: {df.columns.tolist()}")
         
+        # Handle 'All India Merit' specifically for BCA AI (e.g. "1234(98.5)")
+        if 'all_india_merit' in df.columns:
+            def parse_merit(val):
+                s = str(val)
+                nums = re.findall(r"[\d\.]+", s)
+                if len(nums) >= 2:
+                    return int(nums[0]), float(nums[1]) # Rank, Percentile
+                elif len(nums) == 1:
+                    return int(nums[0]), 0.0
+                return 0, 0.0
+            
+            # Apply parsing
+            parsed_data = df['all_india_merit'].apply(lambda x: pd.Series(parse_merit(x)))
+            df['rank'] = parsed_data[0]
+            df['percentile'] = parsed_data[1]
+
         # Handle AI file specific column names for cutoff score (Merit Marks/Score -> Percentile)
         if 'percentile' not in df.columns:
             if 'merit_marks' in df.columns:
@@ -89,6 +134,12 @@ def colleges():
                 df['percentile'] = df['merit']
             elif 'marks_percentile' in df.columns:
                 df['percentile'] = df['marks_percentile']
+            elif 'hsc_percentage' in df.columns:
+                df['percentile'] = df['hsc_percentage']
+            elif 'percentage' in df.columns:
+                df['percentile'] = df['percentage']
+            elif 'hsc_marks' in df.columns:
+                df['percentile'] = df['hsc_marks']
             else:
                 df['percentile'] = 0.0 # Fallback to prevent KeyError
 
@@ -120,6 +171,17 @@ def colleges():
                 df['institute_name'] = df['institute']
             elif 'name' in df.columns:
                 df['institute_name'] = df['name']
+            elif 'college_name' in df.columns:
+                df['institute_name'] = df['college_name']
+        
+        # Handle Course Name aliases (Common in BCA files)
+        if 'course_name' not in df.columns:
+            if 'branch' in df.columns:
+                df['course_name'] = df['branch']
+            elif 'course' in df.columns:
+                df['course_name'] = df['course']
+            elif 'subject' in df.columns:
+                df['course_name'] = df['subject']
 
         # Handle Seat Type aliases (AI files)
         if 'seat_type' not in df.columns and 'type' in df.columns:
@@ -201,7 +263,7 @@ def colleges():
     area_filter = request.args.get('area', '')
 
     # Determine if we should load data (MCA and MBA allow loading without specialty)
-    is_mca_or_mba = (dept_filter in ['MCA', 'MBA'])
+    is_mca_or_mba = (dept_filter in ['MCA', 'MBA', 'BCA'])
     
     if (specialty_filter or is_mca_or_mba) and not df.empty:
         # Filter by Branch (Exact Match)
@@ -218,13 +280,18 @@ def colleges():
             temp_df = temp_df[temp_df['area'] == area_filter]
 
         # Enforce Rank Range selection for MCA MH and MBA MH (Don't show colleges until Rank Range is selected)
-        if ((dept_filter == 'MCA' and location_filter != 'AI') or (dept_filter == 'MBA' and location_filter != 'AI')) and not (request.args.get('min_rank') and request.args.get('max_rank')):
+        if ((dept_filter == 'MCA' and location_filter != 'AI') or (dept_filter == 'MBA' and location_filter != 'AI') or (dept_filter == 'BCA' and location_filter != 'AI')) and not (request.args.get('min_rank') and request.args.get('max_rank')):
             temp_df = temp_df.iloc[0:0]
 
         # Filter by Quota (Location)
         # Ignore 'MH' as it is used for file selection, not row filtering
-        if location_filter and location_filter != 'MH' and 'quota' in temp_df.columns:
-            temp_df = temp_df[temp_df['quota'].str.contains(location_filter, na=False)]
+        # For BCA AI, skip strict quota filtering to ensure data shows from the AI file
+        if location_filter and location_filter != 'MH' and 'quota' in temp_df.columns and not (dept_filter == 'BCA' and location_filter == 'AI'):
+            if location_filter == 'AI':
+                # Match 'AI', 'All India', etc. case-insensitive
+                temp_df = temp_df[temp_df['quota'].str.contains(r'AI|All India', case=False, na=False)]
+            else:
+                temp_df = temp_df[temp_df['quota'].str.contains(location_filter, na=False)]
 
         # Filter by Cutoff (Percentile)
         if cutoff_filter:
@@ -232,6 +299,15 @@ def colleges():
                 user_marks = float(cutoff_filter)
                 # Show colleges where cutoff is <= user marks
                 temp_df = temp_df[temp_df['percentile'] <= user_marks]
+            except ValueError:
+                pass
+
+        # Filter by Rank (Single Value)
+        if rank_filter and 'rank' in temp_df.columns:
+            try:
+                user_rank = float(rank_filter)
+                # Show colleges where cutoff rank >= user rank (User eligible)
+                temp_df = temp_df[temp_df['rank'] >= user_rank]
             except ValueError:
                 pass
         
@@ -282,7 +358,11 @@ def colleges():
                 "institute_code": row.get('institute_code', 'N/A'),
                 "choice_code": row.get('choice_code', 'N/A'),
                 "name": row.get('institute_name', 'Unknown Institute'),
+<<<<<<< HEAD
                 "specialty": row.get('course_name', 'MBA' if dept_filter == 'MBA' else 'MCA' if dept_filter == 'MCA' else 'MTECH' if dept_filter == 'MTECH' else 'N/A'),
+=======
+                "specialty": row.get('course_name', 'BCA' if dept_filter == 'BCA' else 'MBA' if dept_filter == 'MBA' else 'MCA' if dept_filter == 'MCA' else 'N/A'),
+>>>>>>> daafe13 (bca)
                 "experience": row.get('percentile', 0),      # Cutoff
                 "gender": row.get('quota', location_filter if location_filter else 'N/A'), # Quota/Location
                 "qualification": row.get('category', 'N/A'),     # Category
@@ -308,6 +388,7 @@ def colleges():
             template_name = 'mba_ai.html'
         else:
             template_name = 'mba_mh.html'
+<<<<<<< HEAD
     elif dept_filter == 'MTECH':
         template_name = 'mtech.html'
         
@@ -320,6 +401,13 @@ def colleges():
                 grouped[code]['cutoffs'] = []
             grouped[code]['cutoffs'].append(doc)
         filtered_doctors = list(grouped.values())
+=======
+    elif dept_filter == 'BCA':
+        if location_filter == 'AI':
+            template_name = 'bca_ai.html'
+        else:
+            template_name = 'bca_mh.html'
+>>>>>>> daafe13 (bca)
     else:
         template_name = 'doctors.html'
 
@@ -372,9 +460,42 @@ def details():
                     csv_filename = fname
                     break
         csv_path = os.path.join(base_dir, 'data', 'mca', subfolder, csv_filename)
+<<<<<<< HEAD
     elif dept_filter == 'MTECH':
         csv_filename = f'cap{round_filter}.csv'
         csv_path = os.path.join(base_dir, 'data', 'MTECH_ME', csv_filename)
+=======
+    elif dept_filter == 'MBA':
+        if location_filter == 'AI':
+            subfolder = 'AI'
+            csv_filename = f'MBA_CAP{round_filter}_AI - MBA_CAP{round_filter}_AI.csv'
+        else:
+            subfolder = 'MH'
+            csv_filename = f'MBA_CAP{round_filter}_MHCutOff_2023_24 - MBA_CAP{round_filter}_MHCutOff_2023_24.csv'
+        csv_path = os.path.join(base_dir, 'data', 'mba', subfolder, csv_filename)
+    elif dept_filter == 'BCA':
+        if location_filter == 'AI':
+            subfolder = 'AI'
+        else:
+            subfolder = 'MH'
+            
+        search_dir = os.path.join(base_dir, 'data', 'bca', subfolder)
+        csv_filename = f'BCA_CAP{round_filter}_{subfolder}.csv'
+        
+        if os.path.exists(search_dir):
+            # Try to find file matching CAP round
+            for fname in os.listdir(search_dir):
+                if fname.endswith('.csv') and f'CAP{round_filter}' in fname:
+                    csv_filename = fname
+                    break
+            # Fallback
+            if not os.path.exists(os.path.join(search_dir, csv_filename)):
+                for fname in os.listdir(search_dir):
+                    if fname.endswith('.csv'):
+                        csv_filename = fname
+                        break
+        csv_path = os.path.join(search_dir, csv_filename)
+>>>>>>> daafe13 (bca)
     else:
         csv_filename = f'polytechnic_cutoff_data_cap_{round_filter}.csv'
         csv_path = os.path.join(base_dir, 'data', 'polytechnic', csv_filename)
