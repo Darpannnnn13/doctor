@@ -1,0 +1,228 @@
+institute_code,institute_name,branch_code,branch,course_name,category,rank,score,gender,quota,category1,year,cap_round
+1002,"Government College of Engineering, Amravati",0100220110,ME/M.Tech,Environmental Engineering,GOPENS,4247,4.77,G,S,OPEN,2025,3
+1002,"Government College of Engineering, Amravati",0100221210,ME/M.Tech,Structural Engineering,GNT1S,3327,7.57,G,S,NT1,2025,3
+1002,"Government College of Engineering, Amravati",0100224210,ME/M.Tech,Computer Science and Engineering,GOPENS,2357,10.39,G,S,OPEN,2025,3
+1002,"Government College of Engineering, Amravati",0100224210,ME/M.Tech,Computer Science and Engineering,GSCS,4393,4.22,G,S,SC,2025,3
+1002,"Government College of Engineering, Amravati",0100224210,ME/M.Tech,Computer Science and Engineering,GSTS,3139,8.1,G,S,ST,2025,3
+1002,"Government College of Engineering, Amravati",0100261010,ME/M.Tech,Thermal Engineering,GOPENS,4370,4.33,G,S,OPEN,2025,3
+1005,"Sant Gadge Baba Amravati University,Amravati",0100594310,ME/M.Tech,Artificial Intelligence and Data Science,GOPENS,4101,5.24,G,S,OPEN,2025,3
+1105,"Prof. Ram Meghe Institute of Technology & Research, Amravati",0110520110,ME/M.Tech,Environmental Engineering,GOPENS,4965,2.04,G,S,OPEN,2025,3
+1105,"Prof. Ram Meghe Institute of Technology & Research, Amravati",0110524210,ME/M.Tech,Computer Science and Engineering,GOPENS,1439,14.29,G,S,OPEN,2025,3
+1123,"Dr.Rajendra Gode Institute of Technology & Research, Amravati",0112391210,ME/M.Tech,Transportation Engineering and Management,GSCS,5234,0.68,G,S,SC,2025,3
+1128,"Prof Ram Meghe College of Engineering  and Management, Badnera",0112891010,ME/M.Tech,Construction Engg and Management,GOPENS,4137,5.15,G,S,OPEN,2025,3
+2008,"Government College of Engineering,  Chhatrapati Sambhajinagar",0200821210,ME/M.Tech,Structural Engineering,GOPENS,1180,15.85,G,S,OPEN,2025,3
+2008,"Government College of Engineering,  Chhatrapati Sambhajinagar",0200821210,ME/M.Tech,Structural Engineering,GNT3S,3545,6.88,G,S,NT3,2025,3
+2008,"Government College of Engineering,  Chhatrapati Sambhajinagar",0200824210,ME/M.Tech,Computer Science and Engineering,GOPENS,956,17.51,G,S,OPEN,2025,3
+2020,"Shri Guru Gobind Singhji Institute of Engineering and Technology, Nanded",0202005010,ME/M.Tech,Artificial Intelligence,GOPENS,3126,8.12,G,S,OPEN,2025,3
+2020,"Shri Guru Gobind Singhji Institute of Engineering and Technology, Nanded",0202005010,ME/M.Tech,Artificial Intelligence,GOBCS,5229,0.74,G,S,OBC,2025,3
+2020,"Shri Guru Gobind Singhji Institute of Engineering and Technology, Nanded",0202019910,ME/M.Tech,Civil Engineering (Water Management),GOPENS,3097,8.26,G,S,OPEN,2025,3
+2020,"Shri Guru Gobind Singhji Institute of Engineering and Technology, Nanded",0202021210,ME/M.Tech,Structural Engineering,GSTS,1014,68.68,G,S,ST,2025,3
+2020,"Shri Guru Gobind Singhji Institute of Engineering and Technology, Nanded",0202026710,ME/M.Tech,Computer Networks and Information Security,GOPENS,5169,1.15,G,S,OPEN,2025,3
+2112,"Shree Yash Pratishthan, Shreeyash College of Engineering and Technology, Aurangabad",0211221210,ME/M.Tech,Structural Engineering,GOBCS,1223,66.2,G,S,OBC,2025,3
+2112,"Shree Yash Pratishthan, Shreeyash College of Engineering and Technology, Aurangabad",0211224210,ME/M.Tech,Computer Science and Engineering,GOPENS,3253,7.69,G,S,OPEN,2025,3
+2113,"G. S. Mandal's Maharashtra Institute of Technology, Aurangabad",0211397010,ME/M.Tech,Computer Science and Engineering (Data Science and Analytics),GOPENS,4569,3.67,G,S,OPEN,2025,3
+2129,"M.S. Bidve Engineering College, Latur",0212924510,ME/M.Tech,Computer Engineering,GSCS,4779,2.92,G,S,SC,2025,3
+2133,"Mahatma Basaweshwar Education Society's College of Engineering, Ambejogai",0213329410,ME/M.Tech,Control System Engineering,GOPENS,2196,11.0,G,S,OPEN,2025,3
+2134,"Peoples Education Society's College of Engineering, Aurangabad",0213429210,ME/M.Tech,Electrical Power System,GOPENS,4746,3.0,G,S,OPEN,2025,3
+2134,"Peoples Education Society's College of Engineering, Aurangabad",0213495410,ME/M.Tech,Computer Science and Engineering (Cyber Security),GOPENS,4778,2.92,G,S,OPEN,2025,3
+2533,"CSMSS Chh. Shahu College of Engineering, Aurangabad",0253329310,ME/M.Tech,Electrical Engineering,GOPENS,4674,3.33,G,S,OPEN,2025,3
+2533,"CSMSS Chh. Shahu College of Engineering, Aurangabad",0253394310,ME/M.Tech,Artificial Intelligence and Data Science,GOPENS,4879,2.59,G,S,OPEN,2025,3
+2533,"CSMSS Chh. Shahu College of Engineering, Aurangabad",0253395110,ME/M.Tech,Civil Engineering (Computer Aided Structural Engineering),GOPENS,4400,4.12,G,S,OPEN,2025,3
+2533,"CSMSS Chh. Shahu College of Engineering, Aurangabad",0253395110,ME/M.Tech,Civil Engineering (Computer Aided Structural Engineering),GSCS,5109,1.36,G,S,SC,2025,3
+2533,"CSMSS Chh. Shahu College of Engineering, Aurangabad",0253396810,ME/M.Tech,Electronics and Communication (VLSI Design),GOPENS,5083,1.55,G,S,OPEN,2025,3
+3012,"Veermata Jijabai Technological Institute(VJTI), Matunga, Mumbai",0301220110,ME/M.Tech,Environmental Engineering,GOPENS,994,17.23,G,S,OPEN,2025,3
+3012,"Veermata Jijabai Technological Institute(VJTI), Matunga, Mumbai",0301220110,ME/M.Tech,Environmental Engineering,GSCS,1748,12.74,G,S,SC,2025,3
+3012,"Veermata Jijabai Technological Institute(VJTI), Matunga, Mumbai",0301220110,ME/M.Tech,Environmental Engineering,GOBCS,2445,10.23,G,S,OBC,2025,3
+3012,"Veermata Jijabai Technological Institute(VJTI), Matunga, Mumbai",0301221010,ME/M.Tech,Construction Management,GOPENS,390,247.0,G,S,OPEN,2025,3
+3012,"Veermata Jijabai Technological Institute(VJTI), Matunga, Mumbai",0301221210,ME/M.Tech,Structural Engineering,GSCS,1472,14.12,G,S,SC,2025,3
+3012,"Veermata Jijabai Technological Institute(VJTI), Matunga, Mumbai",0301221210,ME/M.Tech,Structural Engineering,GNT2S,963,17.4,G,S,NT2,2025,3
+3012,"Veermata Jijabai Technological Institute(VJTI), Matunga, Mumbai",0301224510,ME/M.Tech,Computer Engineering,GSCS,307,294.0,G,S,SC,2025,3
+3012,"Veermata Jijabai Technological Institute(VJTI), Matunga, Mumbai",0301224510,ME/M.Tech,Computer Engineering,GVJS,2905,8.77,G,S,VJ,2025,3
+3012,"Veermata Jijabai Technological Institute(VJTI), Matunga, Mumbai",0301224510,ME/M.Tech,Computer Engineering,GNT2S,1970,11.78,G,S,NT2,2025,3
+3012,"Veermata Jijabai Technological Institute(VJTI), Matunga, Mumbai",0301224510,ME/M.Tech,Computer Engineering,GSEBCS,2355,10.39,G,S,SEBC,2025,3
+3012,"Veermata Jijabai Technological Institute(VJTI), Matunga, Mumbai",0301226010,ME/M.Tech,Software Engineering,GOPENS,113,393.0,G,S,OPEN,2025,3
+3012,"Veermata Jijabai Technological Institute(VJTI), Matunga, Mumbai",0301226010,ME/M.Tech,Software Engineering,GSCS,318,284.0,G,S,SC,2025,3
+3012,"Veermata Jijabai Technological Institute(VJTI), Matunga, Mumbai",0301226610,ME/M.Tech,Project Mangement,GOPENS,594,21.67,G,S,OPEN,2025,3
+3012,"Veermata Jijabai Technological Institute(VJTI), Matunga, Mumbai",0301226610,ME/M.Tech,Project Mangement,GSCS,1233,15.51,G,S,SC,2025,3
+3012,"Veermata Jijabai Technological Institute(VJTI), Matunga, Mumbai",0301229610,ME/M.Tech,Integrated Power Systems,GOPENS,4029,5.46,G,S,OPEN,2025,3
+3012,"Veermata Jijabai Technological Institute(VJTI), Matunga, Mumbai",0301229910,ME/M.Tech,Embedded Control Systems,GOPENS,2079,11.33,G,S,OPEN,2025,3
+3012,"Veermata Jijabai Technological Institute(VJTI), Matunga, Mumbai",0301234910,ME/M.Tech,Defence Technology,GOPENS,3754,6.33,G,S,OPEN,2025,3
+3012,"Veermata Jijabai Technological Institute(VJTI), Matunga, Mumbai",0301237210,ME/M.Tech,Electronics and Telecommunication Engg,GNT2S,953,17.54,G,S,NT2,2025,3
+3012,"Veermata Jijabai Technological Institute(VJTI), Matunga, Mumbai",0301261910,ME/M.Tech,Machine Design,GOPENS,584,22.0,G,S,OPEN,2025,3
+3012,"Veermata Jijabai Technological Institute(VJTI), Matunga, Mumbai",0301262510,ME/M.Tech,Technical Textile,GSCS,2743,9.33,G,S,SC,2025,3
+3012,"Veermata Jijabai Technological Institute(VJTI), Matunga, Mumbai",0301263410,ME/M.Tech,CAD/CAM- ROBOTICS,GOPENS,4929,2.33,G,S,OPEN,2025,3
+3012,"Veermata Jijabai Technological Institute(VJTI), Matunga, Mumbai",0301294310,ME/M.Tech,Artificial Intelligence and Data Science,GSCS,330,277.0,G,S,SC,2025,3
+3012,"Veermata Jijabai Technological Institute(VJTI), Matunga, Mumbai",0301295910,ME/M.Tech,Internet of Things,GOPENS,802,18.74,G,S,OPEN,2025,3
+3012,"Veermata Jijabai Technological Institute(VJTI), Matunga, Mumbai",0301295910,ME/M.Tech,Internet of Things,GSCS,1411,14.33,G,S,SC,2025,3
+3012,"Veermata Jijabai Technological Institute(VJTI), Matunga, Mumbai",0301295910,ME/M.Tech,Internet of Things,GVJS,4450,4.01,G,S,VJ,2025,3
+3012,"Veermata Jijabai Technological Institute(VJTI), Matunga, Mumbai",0301295910,ME/M.Tech,Internet of Things,GNT2S,2028,11.67,G,S,NT2,2025,3
+3014,"Sardar Patel College of Engineering, Andheri",0301421070U,ME/M.Tech,Construction Management,GOPENS,567,22.06,G,S,OPEN,2025,3
+3014,"Sardar Patel College of Engineering, Andheri",0301421070U,ME/M.Tech,Construction Management,GSCS,1639,13.3,G,S,SC,2025,3
+3014,"Sardar Patel College of Engineering, Andheri",0301421070U,ME/M.Tech,Construction Management,GSEBCS,1330,14.82,G,S,SEBC,2025,3
+3014,"Sardar Patel College of Engineering, Andheri",0301421070U,ME/M.Tech,Construction Management,GOPENS,468,25.86,G,S,OPEN,2025,3
+3014,"Sardar Patel College of Engineering, Andheri",0301421070U,ME/M.Tech,Construction Management,GNT2S,1199,15.69,G,S,NT2,2025,3
+3014,"Sardar Patel College of Engineering, Andheri",0301421070U,ME/M.Tech,Construction Management,GSEBCS,828,18.61,G,S,SEBC,2025,3
+3014,"Sardar Patel College of Engineering, Andheri",0301421070U,ME/M.Tech,Construction Management,PWDOPENS,887,70.05,P,S,OPEN,2025,3
+3033,"Dr. Babasaheb Ambedkar Technological University, Lonere",0303324510,ME/M.Tech,Computer Engineering,GOPENS,2139,11.04,G,S,OPEN,2025,3
+3135,"Manjara Charitable Trust's Rajiv Gandhi Institute of Technology, Mumbai",0313524510,ME/M.Tech,Computer Engineering,GOPENS,5093,1.55,G,S,OPEN,2025,3
+3139,"Vidyalankar Institute of Technology,Wadala, Mumbai",0313924510,ME/M.Tech,Computer Engineering,GOPENS,1167,15.88,G,S,OPEN,2025,3
+3175,"M.G.M.'s College of Engineering and Technology, Kamothe, Navi Mumbai",0317521210,ME/M.Tech,Structural Engineering,GOPENS,2350,10.49,G,S,OPEN,2025,3
+3175,"M.G.M.'s College of Engineering and Technology, Kamothe, Navi Mumbai",0317521210,ME/M.Tech,Structural Engineering,GSCS,3216,7.91,G,S,SC,2025,3
+3175,"M.G.M.'s College of Engineering and Technology, Kamothe, Navi Mumbai",0317521210,ME/M.Tech,Structural Engineering,PWDOPENS,1801,51.9,P,S,OPEN,2025,3
+3176,"Thakur College of Engineering and Technology, Kandivali, Mumbai",0317619110,ME/M.Tech,Civil Engineering,GOPENS,1721,12.96,G,S,OPEN,2025,3
+3176,"Thakur College of Engineering and Technology, Kandivali, Mumbai",0317619110,ME/M.Tech,Civil Engineering,GOPENS,4725,3.06,G,S,OPEN,2025,3
+3176,"Thakur College of Engineering and Technology, Kandivali, Mumbai",0317624510,ME/M.Tech,Computer Engineering,GOPENS,2225,10.97,G,S,OPEN,2025,3
+3176,"Thakur College of Engineering and Technology, Kandivali, Mumbai",0317624610,ME/M.Tech,Information Technology,GOPENS,2902,8.77,G,S,OPEN,2025,3
+3176,"Thakur College of Engineering and Technology, Kandivali, Mumbai",0317694310,ME/M.Tech,Artificial Intelligence and Data Science,GOPENS,1852,12.33,G,S,OPEN,2025,3
+3183,"Anjuman-I-Islam's M.H. Saboo Siddik College of Engineering, Byculla, Mumbai",0318391010,ME/M.Tech,Construction Engg and Management,GOPENS,3766,6.19,G,S,OPEN,2025,3
+3183,"Anjuman-I-Islam's M.H. Saboo Siddik College of Engineering, Byculla, Mumbai",0318391010,ME/M.Tech,Construction Engg and Management,GOPENS,3416,7.22,G,S,OPEN,2025,3
+3184,"Fr. Conceicao Rodrigues College of Engineering, Bandra,Mumbai",0318424510,ME/M.Tech,Computer Engineering,GOPENS,4520,3.89,G,S,OPEN,2025,3
+3184,"Fr. Conceicao Rodrigues College of Engineering, Bandra,Mumbai",0318424510,ME/M.Tech,Computer Engineering,GOPENS,2680,9.42,G,S,OPEN,2025,3
+3185,"Vivekanand Education Society's Institute of Technology, Chembur, Mumbai",0318524610,ME/M.Tech,Information Technology,GOPENS,1296,15.06,G,S,OPEN,2025,3
+3185,"Vivekanand Education Society's Institute of Technology, Chembur, Mumbai",0318534110,ME/M.Tech,VLSI and Embeded Systems,GOPENS,4218,4.83,G,S,OPEN,2025,3
+3187,"N.Y.S.S.'s Datta Meghe College of Engineering, Airoli, Navi Mumbai",0318724510,ME/M.Tech,Computer Engineering,GOPENS,5251,0.67,G,S,OPEN,2025,3
+3189,"Bharati Vidyapeeth College of Engineering,  Navi Mumbai",0318924510,ME/M.Tech,Computer Engineering,GOPENS,4951,2.27,G,S,OPEN,2025,3
+3194,"Vidyavardhini's College of Engineering and Technology, Vasai",0319421210,ME/M.Tech,Structural Engineering,GOPENS,2163,11.02,G,S,OPEN,2025,3
+3199,"Shri Vile Parle Kelvani Mandal's Dwarkadas J. Sanghvi College of Engineering, Vile Parle,Mumbai",0319924510,ME/M.Tech,Computer Engineering,GOPENS,589,21.77,G,S,OPEN,2025,3
+3207,"Mahatma Education Society's Pillai College of Engineering, New Panvel",0320724610,ME/M.Tech,Information Technology,GOPENS,5228,0.74,G,S,OPEN,2025,3
+3211,"S.I.E.S. Graduate School of Technology, Nerul, Navi Mumbai",0321125010,ME/M.Tech,Information Security,GOPENS,3462,7.14,G,S,OPEN,2025,3
+3211,"S.I.E.S. Graduate School of Technology, Nerul, Navi Mumbai",0321194310,ME/M.Tech,Artificial Intelligence and Data Science,GOPENS,3145,8.0,G,S,OPEN,2025,3
+3215,"Bhartiya Vidya Bhavan's Sardar Patel Institute  of Technology , Andheri, Mumbai",0321524510,ME/M.Tech,Computer Engineering,GOPENS,160,367.0,G,S,OPEN,2025,3
+3215,"Bhartiya Vidya Bhavan's Sardar Patel Institute  of Technology , Andheri, Mumbai",0321524510,ME/M.Tech,Computer Engineering,GVJS,742,19.33,G,S,VJ,2025,3
+3215,"Bhartiya Vidya Bhavan's Sardar Patel Institute  of Technology , Andheri, Mumbai",0321524510,ME/M.Tech,Computer Engineering,GNT1S,5225,0.74,G,S,NT1,2025,3
+3215,"Bhartiya Vidya Bhavan's Sardar Patel Institute  of Technology , Andheri, Mumbai",0321537210,ME/M.Tech,Electronics and Telecommunication Engg,GOPENS,4055,5.33,G,S,OPEN,2025,3
+3423,"Shree L.R. Tiwari College of Engineering, Mira Road, Mumbai",0342337210,ME/M.Tech,Electronics and Telecommunication Engg,GOPENS,2825,9.0,G,S,OPEN,2025,3
+3439,"Anjuman-I-Islam's Kalsekar Technical Campus, Panvel",0343921210,ME/M.Tech,Structural Engineering,GOPENS,1664,13.09,G,S,OPEN,2025,3
+4116,"Ankush Shikshan Sanstha's G.H.Raisoni College of Engineering, Nagpur",0411619410,ME/M.Tech,Transportation Engineering,GOPENS,4815,2.72,G,S,OPEN,2025,3
+4116,"Ankush Shikshan Sanstha's G.H.Raisoni College of Engineering, Nagpur",0411624210,ME/M.Tech,Computer Science and Engineering,GOPENS,3705,6.46,G,S,OPEN,2025,3
+4142,"G H Raisoni College of Engineering & Management, Nagpur",0414224210,ME/M.Tech,Computer Science and Engineering,GOPENS,5090,1.55,G,S,OPEN,2025,3
+4145,"Wainganga College of Engineering and Management, Dongargaon, Nagpur",0414594310,ME/M.Tech,Artificial Intelligence and Data Science,GOPENS,3712,6.46,G,S,OPEN,2025,3
+4151,"Tulsiramji Gaikwad Patil College of Engineering & Technology, Nagpur",0415194910,ME/M.Tech,Artificial Intelligence and Machine Learning,GOPENS,3124,8.12,G,S,OPEN,2025,3
+4163,Rajiv Gandhi College of Engineering Research & Technology  Chandrapur,0416324210,ME/M.Tech,Computer Science and Engineering,GOPENS,4337,4.42,G,S,OPEN,2025,3
+4196,"Gurunanak Educational Society's Gurunanak Institute of Technology, Nagpur",0419621210,ME/M.Tech,Structural Engineering,GSCS,2039,11.6,G,S,SC,2025,3
+5121,"K. K. Wagh Institute of Engineering Education and Research, Nashik",0512121210,ME/M.Tech,Structural Engineering,GOPENS,4535,3.77,G,S,OPEN,2025,3
+5121,"K. K. Wagh Institute of Engineering Education and Research, Nashik",0512129210,ME/M.Tech,Electrical Power System,GOPENS,3183,8.0,G,S,OPEN,2025,3
+5124,"Jagadamba Education Soc. Nashik's S.N.D. College of Engineering & Reserch, Babulgaon",0512421210,ME/M.Tech,Structural Engineering,GSCS,3888,5.84,G,S,SC,2025,3
+5124,"Jagadamba Education Soc. Nashik's S.N.D. College of Engineering & Reserch, Babulgaon",0512424510,ME/M.Tech,Computer Engineering,GOPENS,1892,12.19,G,S,OPEN,2025,3
+5139,"Pravara Rural College of Engineering, Loni, Pravaranagar, Ahmednagar.",0513921210,ME/M.Tech,Structural Engineering,GOPENS,1090,16.37,G,S,OPEN,2025,3
+5139,"Pravara Rural College of Engineering, Loni, Pravaranagar, Ahmednagar.",0513934110,ME/M.Tech,VLSI and Embeded Systems,GOPENS,3512,7.0,G,S,OPEN,2025,3
+5160,"Sanjivani Rural Education Society's Sanjivani College of Engineering, Kopargaon",0516021210,ME/M.Tech,Structural Engineering,GNT2S,1609,60.75,G,S,NT2,2025,3
+5161,"Dr. Vithalrao Vikhe Patil College of Engineering, Ahmednagar",0516121210,ME/M.Tech,Structural Engineering,GSTS,1611,60.75,G,S,ST,2025,3
+5162,"Amrutvahini Sheti & Shikshan Vikas Sanstha's Amrutvahini College of Engineering, Sangamner",0516219110,ME/M.Tech,Civil Engineering,GSTS,4726,3.06,G,S,ST,2025,3
+5173,"SNJB's Late Sau. Kantabai Bhavarlalji Jain College of Engineering,  (Jain Gurukul), Neminagar,Chandwad,(Nashik)",0517324510,ME/M.Tech,Computer Engineering,GOPENS,5265,0.64,G,S,OPEN,2025,3
+5177,"Matoshri College of Engineering and Research Centre, Eklahare, Nashik",0517729210,ME/M.Tech,Electrical Power System,GOPENS,3186,8.0,G,S,OPEN,2025,3
+5181,"Gokhale Education Society's, R.H. Sapat College of Engineering, Management Studies and Research, Nashik",0518190410,ME/M.Tech,Mechanical Engineering Design,GOPENS,2093,11.33,G,S,OPEN,2025,3
+5380,"Adsul's Technical Campus, Chas Dist. Ahmednagar",0538021110,ME/M.Tech,Civil - Structural Engineering,GSCS,3320,7.57,G,S,SC,2025,3
+5380,"Adsul's Technical Campus, Chas Dist. Ahmednagar",0538024510,ME/M.Tech,Computer Engineering,GOPENS,2715,9.33,G,S,OPEN,2025,3
+5380,"Adsul's Technical Campus, Chas Dist. Ahmednagar",0538029310,ME/M.Tech,Electrical Engineering,GOPENS,4375,4.33,G,S,OPEN,2025,3
+5381,"Shri. Jaykumar Rawal Institute of Technology, Dondaicha.",0538124510,ME/M.Tech,Computer Engineering,GOPENS,5143,1.29,G,S,OPEN,2025,3
+6005,"Government College of Engineering, Karad",0600521010,ME/M.Tech,Construction Management,GOPENS,2754,9.29,G,S,OPEN,2025,3
+6005,"Government College of Engineering, Karad",0600521010,ME/M.Tech,Construction Management,GSTS,5111,1.35,G,S,ST,2025,3
+6005,"Government College of Engineering, Karad",0600521210,ME/M.Tech,Structural Engineering,GOPENS,1966,11.94,G,S,OPEN,2025,3
+6005,"Government College of Engineering, Karad",0600521210,ME/M.Tech,Structural Engineering,GSTS,2781,9.21,G,S,ST,2025,3
+6005,"Government College of Engineering, Karad",0600524210,ME/M.Tech,Computer Science and Engineering,GOPENS,1885,12.19,G,S,OPEN,2025,3
+6005,"Government College of Engineering, Karad",0600524210,ME/M.Tech,Computer Science and Engineering,GSCS,4988,2.0,G,S,SC,2025,3
+6005,"Government College of Engineering, Karad",0600524210,ME/M.Tech,Computer Science and Engineering,GSTS,4770,2.92,G,S,ST,2025,3
+6007,"Walchand College of Engineering, Sangli",0600721070U,ME/M.Tech,Construction Management,GOPENS,948,17.58,G,S,OPEN,2025,3
+6007,"Walchand College of Engineering, Sangli",0600721070U,ME/M.Tech,Construction Management,GSCS,2550,9.89,G,S,SC,2025,3
+6007,"Walchand College of Engineering, Sangli",0600724270U,ME/M.Tech,Computer Science and Engineering,GOPENS,441,27.74,G,S,OPEN,2025,3
+6007,"Walchand College of Engineering, Sangli",0600724270U,ME/M.Tech,Computer Science and Engineering,GNT1S,1049,16.69,G,S,NT1,2025,3
+6007,"Walchand College of Engineering, Sangli",0600724270U,ME/M.Tech,Computer Science and Engineering,GOPENS,4255,4.67,G,S,OPEN,2025,3
+6007,"Walchand College of Engineering, Sangli",0600757770U,ME/M.Tech,Civil Environmental Engineering,GOPENS,1896,12.05,G,S,OPEN,2025,3
+6007,"Walchand College of Engineering, Sangli",0600757770U,ME/M.Tech,Civil Environmental Engineering,GSCS,2419,10.33,G,S,SC,2025,3
+6028,"Department of Technology, Shivaji University, Kolhapur",0602825410,ME/M.Tech,Computer Science and Technology,GOPENS,4787,2.78,G,S,OPEN,2025,3
+6122,"TSSMS's Pd. Vasantdada Patil Institute of Technology, Bavdhan, Pune",0612221010,ME/M.Tech,Construction Management,GOPENS,4036,5.45,G,S,OPEN,2025,3
+6122,"TSSMS's Pd. Vasantdada Patil Institute of Technology, Bavdhan, Pune",0612234110,ME/M.Tech,VLSI and Embeded Systems,GOPENS,2104,11.33,G,S,OPEN,2025,3
+6141,"Jaywant Shikshan Prasarak Mandal's,Rajarshi Shahu College of Engineering, Tathawade, Pune",0614121210,ME/M.Tech,Structural Engineering,GSEBCS,26,88.44,G,S,SEBC,2025,3
+6141,"Jaywant Shikshan Prasarak Mandal's,Rajarshi Shahu College of Engineering, Tathawade, Pune",0614124510,ME/M.Tech,Computer Engineering,GOPENS,2897,8.77,G,S,OPEN,2025,3
+6141,"Jaywant Shikshan Prasarak Mandal's,Rajarshi Shahu College of Engineering, Tathawade, Pune",0614124510,ME/M.Tech,Computer Engineering,GSTS,3706,6.46,G,S,ST,2025,3
+6145,"JSPM'S Jaywantrao Sawant College of Engineering,Pune",0614524510,ME/M.Tech,Computer Engineering,GOPENS,4442,4.01,G,S,OPEN,2025,3
+6145,"JSPM'S Jaywantrao Sawant College of Engineering,Pune",0614524510,ME/M.Tech,Computer Engineering,GNT3S,5082,1.55,G,S,NT3,2025,3
+6146,"MIT Academy of Engineering,Alandi, Pune",0614624510,ME/M.Tech,Computer Engineering,GOPENS,1117,16.28,G,S,OPEN,2025,3
+6146,"MIT Academy of Engineering,Alandi, Pune",0614624510,ME/M.Tech,Computer Engineering,GSCS,1771,12.67,G,S,SC,2025,3
+6146,"MIT Academy of Engineering,Alandi, Pune",0614624510,ME/M.Tech,Computer Engineering,GOBCS,1549,13.67,G,S,OBC,2025,3
+6155,"G.H.Raisoni College of Engineering & Management, Wagholi, Pune",0615521210,ME/M.Tech,Structural Engineering,GOPENS,3438,7.16,G,S,OPEN,2025,3
+6155,"G.H.Raisoni College of Engineering & Management, Wagholi, Pune",0615524510,ME/M.Tech,Computer Engineering,GOPENS,4094,5.24,G,S,OPEN,2025,3
+6156,"Marathwada Mitra Mandal's College of Engineering, Karvenagar, Pune",0615624510,ME/M.Tech,Computer Engineering,GOPENS,2565,9.74,G,S,OPEN,2025,3
+6156,"Marathwada Mitra Mandal's College of Engineering, Karvenagar, Pune",0615624510,ME/M.Tech,Computer Engineering,GSCS,3571,6.87,G,S,SC,2025,3
+6156,"Marathwada Mitra Mandal's College of Engineering, Karvenagar, Pune",0615624510,ME/M.Tech,Computer Engineering,GNT2S,3557,6.87,G,S,NT2,2025,3
+6156,"Marathwada Mitra Mandal's College of Engineering, Karvenagar, Pune",0615624510,ME/M.Tech,Computer Engineering,GOBCS,1705,59.0,G,S,OBC,2025,3
+6156,"Marathwada Mitra Mandal's College of Engineering, Karvenagar, Pune",0615694010,ME/M.Tech,Data Sciences,GOPENS,1313,15.0,G,S,OPEN,2025,3
+6156,"Marathwada Mitra Mandal's College of Engineering, Karvenagar, Pune",0615694010,ME/M.Tech,Data Sciences,GSCS,2467,10.07,G,S,SC,2025,3
+6175,"Pimpri Chinchwad Education Trust, Pimpri Chinchwad College of Engineering, Pune",0617521010,ME/M.Tech,Construction Management,GOPENS,1424,14.33,G,S,OPEN,2025,3
+6175,"Pimpri Chinchwad Education Trust, Pimpri Chinchwad College of Engineering, Pune",0617521010,ME/M.Tech,Construction Management,GVJS,1651,13.09,G,S,VJ,2025,3
+6175,"Pimpri Chinchwad Education Trust, Pimpri Chinchwad College of Engineering, Pune",0617524510,ME/M.Tech,Computer Engineering,GOPENS,933,17.67,G,S,OPEN,2025,3
+6175,"Pimpri Chinchwad Education Trust, Pimpri Chinchwad College of Engineering, Pune",0617524510,ME/M.Tech,Computer Engineering,GNT1S,3579,6.82,G,S,NT1,2025,3
+6175,"Pimpri Chinchwad Education Trust, Pimpri Chinchwad College of Engineering, Pune",0617524510,ME/M.Tech,Computer Engineering,GOBCS,1000,17.22,G,S,OBC,2025,3
+6175,"Pimpri Chinchwad Education Trust, Pimpri Chinchwad College of Engineering, Pune",0617534110,ME/M.Tech,VLSI and Embeded Systems,GOPENS,3009,8.44,G,S,OPEN,2025,3
+6175,"Pimpri Chinchwad Education Trust, Pimpri Chinchwad College of Engineering, Pune",0617594310,ME/M.Tech,Artificial Intelligence and Data Science,GOPENS,444,27.33,G,S,OPEN,2025,3
+6177,"Sinhgad College of Engineering, Vadgaon (BK), Pune",0617720110,ME/M.Tech,Environmental Engineering,GOPENS,3652,6.53,G,S,OPEN,2025,3
+6177,"Sinhgad College of Engineering, Vadgaon (BK), Pune",0617721210,ME/M.Tech,Structural Engineering,GOPENS,2775,9.21,G,S,OPEN,2025,3
+6177,"Sinhgad College of Engineering, Vadgaon (BK), Pune",0617721210,ME/M.Tech,Structural Engineering,GSTS,3584,6.82,G,S,ST,2025,3
+6178,"Sinhgad Technical Education Society's Smt. Kashibai Navale College of Engineering,Vadgaon,Pune",0617824510,ME/M.Tech,Computer Engineering,GOPENS,2223,10.97,G,S,OPEN,2025,3
+6178,"Sinhgad Technical Education Society's Smt. Kashibai Navale College of Engineering,Vadgaon,Pune",0617824510,ME/M.Tech,Computer Engineering,GNT2S,3719,6.33,G,S,NT2,2025,3
+6179,"Indira College of Engineering & Management, Pune",0617924510,ME/M.Tech,Computer Engineering,GOPENS,3682,6.49,G,S,OPEN,2025,3
+6184,"K. J.'s Educational Institut Trinity College of Engineering and Research, Pisoli, Haveli",0618421210,ME/M.Tech,Structural Engineering,GOPENS,5271,0.34,G,S,OPEN,2025,3
+6203,"Marathwada Mitra Mandal's Institute of Technology, Lohgaon, Pune",0620324510,ME/M.Tech,Computer Engineering,GOPENS,2986,8.51,G,S,OPEN,2025,3
+6206,"Pune District Education  Association's College of Engineering, Manjari(Bk), Hadapsar, Pune",0620624510,ME/M.Tech,Computer Engineering,GOPENS,5294,0.33,G,S,OPEN,2025,3
+6207,"Dr. D. Y. Patil Unitech Society's Dr. D. Y. Patil  Institute of Technology, Pimpri, Pune",0620724510,ME/M.Tech,Computer Engineering,GOPENS,1632,13.32,G,S,OPEN,2025,3
+6214,"K. E. Society's Rajarambapu Institute of Technology, Walwa, Sangli",0621421210,ME/M.Tech,Structural Engineering,GOBCS,3447,7.16,G,S,OBC,2025,3
+6214,"K. E. Society's Rajarambapu Institute of Technology, Walwa, Sangli",0621424210,ME/M.Tech,Computer Science and Engineering,GOPENS,4443,4.01,G,S,OPEN,2025,3
+6214,"K. E. Society's Rajarambapu Institute of Technology, Walwa, Sangli",0621424210,ME/M.Tech,Computer Science and Engineering,GSCS,5296,0.32,G,S,SC,2025,3
+6220,"SVERI's College of Engineering, Pandharpur",0622021210,ME/M.Tech,Structural Engineering,GOPENS,4298,4.46,G,S,OPEN,2025,3
+6220,"SVERI's College of Engineering, Pandharpur",0622024210,ME/M.Tech,Computer Science and Engineering,GOPENS,5222,0.74,G,S,OPEN,2025,3
+6222,"Dattajirao Kadam Technical Education Society's Textile & Engineering Institute, Ichalkaranji.",0622224210,ME/M.Tech,Computer Science and Engineering,GNT2S,1618,60.62,G,S,NT2,2025,3
+6250,"D.Y. Patil College of Engineering and Technology, Kolhapur",0625024210,ME/M.Tech,Computer Science and Engineering,GNT1S,4114,5.19,G,S,NT1,2025,3
+6250,"D.Y. Patil College of Engineering and Technology, Kolhapur",0625037210,ME/M.Tech,Electronics and Telecommunication Engg,GOBCS,3302,7.67,G,S,OBC,2025,3
+6265,"Walchand Institute of Technology, Solapur",0626521210,ME/M.Tech,Structural Engineering,GOPENS,3593,6.82,G,S,OPEN,2025,3
+6267,"Kolhapur Institute of Technology's College of Engineering(Autonomous), Kolhapur",0626720110,ME/M.Tech,Environmental Engineering,GOPENS,4031,5.45,G,S,OPEN,2025,3
+6267,"Kolhapur Institute of Technology's College of Engineering(Autonomous), Kolhapur",0626794710,ME/M.Tech,Computer Science and Engineering (Data Science),GOPENS,2674,9.42,G,S,OPEN,2025,3
+6268,"Tatyasaheb Kore Institute of Engineering and Technology, Warananagar",0626821010,ME/M.Tech,Construction Management,GSCS,4524,3.77,G,S,SC,2025,3
+6271,Pune Institute of Computer Technology,0627124510,ME/M.Tech,Computer Engineering,GSCS,957,17.51,G,S,SC,2025,3
+6271,Pune Institute of Computer Technology,0627124510,ME/M.Tech,Computer Engineering,GSEBCS,4214,4.83,G,S,SEBC,2025,3
+6271,Pune Institute of Computer Technology,0627194010,ME/M.Tech,Data Sciences,GOPENS,163,367.0,G,S,OPEN,2025,3
+6271,Pune Institute of Computer Technology,0627194010,ME/M.Tech,Data Sciences,GSCS,1116,16.28,G,S,SC,2025,3
+6271,Pune Institute of Computer Technology,0627194010,ME/M.Tech,Data Sciences,GSTS,3900,5.84,G,S,ST,2025,3
+6272,"Dr. D. Y. Patil Pratishthan's D.Y.Patil College of Engineering Akurdi, Pune",0627220110,ME/M.Tech,Environmental Engineering,GOPENS,3083,8.26,G,S,OPEN,2025,3
+6272,"Dr. D. Y. Patil Pratishthan's D.Y.Patil College of Engineering Akurdi, Pune",0627220110,ME/M.Tech,Environmental Engineering,GNT3S,5300,0.32,G,S,NT3,2025,3
+6272,"Dr. D. Y. Patil Pratishthan's D.Y.Patil College of Engineering Akurdi, Pune",0627220110,ME/M.Tech,Environmental Engineering,GOBCS,1709,58.96,G,S,OBC,2025,3
+6272,"Dr. D. Y. Patil Pratishthan's D.Y.Patil College of Engineering Akurdi, Pune",0627224510,ME/M.Tech,Computer Engineering,GOPENS,1115,16.28,G,S,OPEN,2025,3
+6272,"Dr. D. Y. Patil Pratishthan's D.Y.Patil College of Engineering Akurdi, Pune",0627224510,ME/M.Tech,Computer Engineering,GSTS,1292,15.06,G,S,ST,2025,3
+6272,"Dr. D. Y. Patil Pratishthan's D.Y.Patil College of Engineering Akurdi, Pune",0627294210,ME/M.Tech,Robotics and Automation,GOPENS,4190,5.0,G,S,OPEN,2025,3
+6276,"MKSSS's Cummins College of Engineering for Women, Karvenagar,Pune",0627624550F,ME/M.Tech,Computer Engineering,GOPENS,147,374.0,G,S,OPEN,2025,3
+6278,"All India Shri Shivaji Memorial Society's College of Engineering, Pune",0627821010,ME/M.Tech,Construction Management,GOPENS,1986,11.71,G,S,OPEN,2025,3
+6278,"All India Shri Shivaji Memorial Society's College of Engineering, Pune",0627821010,ME/M.Tech,Construction Management,GSCS,2175,11.02,G,S,SC,2025,3
+6278,"All India Shri Shivaji Memorial Society's College of Engineering, Pune",0627821010,ME/M.Tech,Construction Management,GSTS,4633,3.43,G,S,ST,2025,3
+6278,"All India Shri Shivaji Memorial Society's College of Engineering, Pune",0627894310,ME/M.Tech,Artificial Intelligence and Data Science,GOPENS,1096,16.33,G,S,OPEN,2025,3
+6278,"All India Shri Shivaji Memorial Society's College of Engineering, Pune",0627894310,ME/M.Tech,Artificial Intelligence and Data Science,GSTS,4598,3.57,G,S,ST,2025,3
+6281,"Modern Education Society's Wadia College of Engineering, Pune",0628124510,ME/M.Tech,Computer Engineering,PWDOPENS,1244,66.0,P,S,OPEN,2025,3
+6282,"All India Shri Shivaji Memorial Society's Institute of Information Technology,Pune",0628234110,ME/M.Tech,VLSI and Embeded Systems,GSCS,4184,5.0,G,S,SC,2025,3
+6284,"Vidya Pratishthan's Kamalnayan Bajaj Institute of Engineering & Technology, Baramati Dist.Pune",0628494310,ME/M.Tech,Artificial Intelligence and Data Science,GOPENS,3369,7.33,G,S,OPEN,2025,3
+6284,"Vidya Pratishthan's Kamalnayan Bajaj Institute of Engineering & Technology, Baramati Dist.Pune",0628494310,ME/M.Tech,Artificial Intelligence and Data Science,GSCS,3833,6.0,G,S,SC,2025,3
+6284,"Vidya Pratishthan's Kamalnayan Bajaj Institute of Engineering & Technology, Baramati Dist.Pune",0628494310,ME/M.Tech,Artificial Intelligence and Data Science,GOBCS,4044,5.33,G,S,OBC,2025,3
+6284,"Vidya Pratishthan's Kamalnayan Bajaj Institute of Engineering & Technology, Baramati Dist.Pune",0628494310,ME/M.Tech,Artificial Intelligence and Data Science,GSEBCS,1198,66.6,G,S,SEBC,2025,3
+6285,"Bharati Vidyapeeth's College of Engineering for Women, Katraj, Dhankawadi, Pune",0628524550F,ME/M.Tech,Computer Engineering,GOPENS,2186,11.0,G,S,OPEN,2025,3
+6285,"Bharati Vidyapeeth's College of Engineering for Women, Katraj, Dhankawadi, Pune",0628524550F,ME/M.Tech,Computer Engineering,GSTS,3676,6.49,G,S,ST,2025,3
+6288,"Bharati Vidyapeeth's College of Engineering, Kolhapur",0628824210,ME/M.Tech,Computer Science and Engineering,GOPENS,4571,3.6,G,S,OPEN,2025,3
+6288,"Bharati Vidyapeeth's College of Engineering, Kolhapur",0628824210,ME/M.Tech,Computer Science and Engineering,GNT2S,816,71.0,G,S,NT2,2025,3
+6298,"Zeal Education Society's Zeal College of Engineering & Reserch, Narhe, Pune",0629894010,ME/M.Tech,Data Sciences,GOPENS,3689,6.49,G,S,OPEN,2025,3
+6298,"Zeal Education Society's Zeal College of Engineering & Reserch, Narhe, Pune",0629894010,ME/M.Tech,Data Sciences,GSTS,4333,4.42,G,S,ST,2025,3
+6311,"Jayawant Shikshan Prasarak Mandal, Bhivarabai Sawant Institute of Technology & Research, Wagholi",0631124510,ME/M.Tech,Computer Engineering,GOPENS,3895,5.84,G,S,OPEN,2025,3
+6311,"Jayawant Shikshan Prasarak Mandal, Bhivarabai Sawant Institute of Technology & Research, Wagholi",0631124510,ME/M.Tech,Computer Engineering,GNT2S,4914,2.37,G,S,NT2,2025,3
+6317,"Sharad Institute of Technology College of Engineering, Yadrav(Ichalkaranji)",0631794310,ME/M.Tech,Artificial Intelligence and Data Science,GSCS,1483,62.8,G,S,SC,2025,3
+6320,"K.J.'s Educational Institute's K.J.College of Engineering & Management Research, Pisoli",0632024510,ME/M.Tech,Computer Engineering,GOPENS,5151,1.29,G,S,OPEN,2025,3
+6609,"Jaihind College Of Engineering,Kuran",0660994310,ME/M.Tech,Artificial Intelligence and Data Science,GOPENS,4771,2.92,G,S,OPEN,2025,3
+6634,"KJEI's Trinity Academy of Engineering, Yewalewadi, Pune",0663421010,ME/M.Tech,Construction Management,GOPENS,5236,0.68,G,S,OPEN,2025,3
+6649,"TSSM's Bhivarabai Sawant College of Engineering and Research, Narhe, Pune",0664921010,ME/M.Tech,Construction Management,GSCS,4315,4.43,G,S,SC,2025,3
+6732,"Ajeenkya DY Patil School of Engineering, Lohegaon, Pune",0673221010,ME/M.Tech,Construction Management,GOPENS,3321,7.57,G,S,OPEN,2025,3
+6732,"Ajeenkya DY Patil School of Engineering, Lohegaon, Pune",0673221010,ME/M.Tech,Construction Management,GOBCS,5032,1.7,G,S,OBC,2025,3
+6732,"Ajeenkya DY Patil School of Engineering, Lohegaon, Pune",0673221210,ME/M.Tech,Structural Engineering,GOPENS,1814,12.4,G,S,OPEN,2025,3
+6732,"Ajeenkya DY Patil School of Engineering, Lohegaon, Pune",0673224510,ME/M.Tech,Computer Engineering,GSTS,4095,5.24,G,S,ST,2025,3
+6732,"Ajeenkya DY Patil School of Engineering, Lohegaon, Pune",0673224510,ME/M.Tech,Computer Engineering,GOBCS,1655,60.0,G,S,OBC,2025,3
+6754,"International Institute of Information Technology (I²IT), Pune.",0675424510,ME/M.Tech,Computer Engineering,GOPENS,1519,13.83,G,S,OPEN,2025,3
+6754,"International Institute of Information Technology (I²IT), Pune.",0675424510,ME/M.Tech,Computer Engineering,GSCS,2459,10.07,G,S,SC,2025,3
+6755,"JSPM Narhe Technical Campus, Pune.",0675524510,ME/M.Tech,Computer Engineering,GOPENS,3836,6.0,G,S,OPEN,2025,3
+6756,"Fabtech Technical Campus College of Engineering and Research, Sangola",0675629310,ME/M.Tech,Electrical Engineering,GSTS,3721,6.33,G,S,ST,2025,3
+6769,"Rasiklal M. Dhariwal Sinhgad Technical Institutes Campus, Warje, Pune.",0676921010,ME/M.Tech,Construction Management,GOPENS,4896,2.38,G,S,OPEN,2025,3
+6771,"Flora Institute of Technology, Khopi, Near Khed Shivapur Toll Plaza, Pune",0677121210,ME/M.Tech,Structural Engineering,GOPENS,5175,1.02,G,S,OPEN,2025,3
+6794,"Anantrao Pawar College of Engineering & Research, Pune",0679424510,ME/M.Tech,Computer Engineering,GOPENS,3400,7.28,G,S,OPEN,2025,3

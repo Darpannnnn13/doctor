@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MTech Cutoff Analysis</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        body { 
+            background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%); 
+            color: #2d3748; 
+            min-height: 100vh; 
+            font-family: 'Segoe UI', sans-serif;
+        }
+        .glass-card { 
+            background: rgba(255, 255, 255, 0.85); 
+            backdrop-filter: blur(12px); 
+            border: 1px solid rgba(255, 255, 255, 0.9); 
+            border-radius: 24px; 
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        .glass-card:hover { 
+            transform: translateY(-10px) scale(1.02); 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1); 
+            border-color: #fff;
+        }
+        .form-field {
+            border: 1px solid #cbd5e0; border-radius: 12px; padding: 12px 16px;
+            font-size: 0.95rem; font-weight: 500; color: #2d3748; background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.04); transition: all 0.2s ease;
+        }
+        .form-field:focus { 
+            border-color: #4299e1; background-color: #fff; 
+            box-shadow: 0 0 0 4px rgba(66, 153, 225, 0.15); outline: none; 
+        }
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(8px);
+            display: none; justify-content: center; align-items: center; z-index: 1000;
+        }
+        .modal-content {
+            background: white; border-radius: 24px; width: 95%; max-width: 900px;
+            max-height: 85vh; overflow-y: auto; position: relative; padding: 2rem;
+        }
+        .modal-open { overflow: hidden; }
+        .spec-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem;
+        }
+        .spec-item {
+            background: #f8fafc; padding: 1rem; border-radius: 16px;
+            display: flex; align-items: center; gap: 1rem; text-align: left;
+            cursor: pointer; transition: all 0.2s ease; border: 2px solid transparent;
+        }
+        .spec-item:hover {
+            background: #fff; border-color: #4299e1; transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+        .spec-item.active { border-color: #4299e1; background: #ebf8ff; }
+        .spec-item .icon { font-size: 1.8rem; flex-shrink: 0; }
+        .spec-item .text { font-weight: 700; font-size: 0.95rem; color: #2d3748; line-height: 1.3; }
+        .form-select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%234a5568' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+            background-position: right 0.75rem center;
+            background-repeat: no-repeat;
+            background-size: 1.25em 1.25em;
+            padding-right: 2.5rem;
+        }
+    </style>
+</head>
+<body class="p-6">
+
+    <div class="max-w-7xl mx-auto">
+        <header class="flex justify-between items-center mb-10">
+            <div class="flex items-center gap-4">
+                <a href="/" class="bg-white/50 hover:bg-white p-2 rounded-full transition shadow-sm text-2xl" title="Back">⬅️</a>
+                <div>
+                    <h1 class="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-teal-500 drop-shadow-sm">
+                        MTech Colleges
+                    </h1>
+                    <p class="text-gray-600 mt-1 text-lg font-medium">Round {{ selected_round }}</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Filters Section -->
+        <div class="glass-card p-8 mb-8">
+            <form id="filterForm" action="/colleges" method="GET" class="flex flex-wrap items-end gap-3">
+                <input type="hidden" name="department" value="MTECH">
+                <input type="hidden" name="round" value="{{ selected_round if selected_round else '' }}">
+                <input type="hidden" name="specialty" id="specialtyInput" value="{{ selected_specialty or '' }}">
+
+                <!-- Search -->
+                <div class="flex-grow w-full md:w-auto">
+                    <label class="block text-sm text-gray-600 font-bold mb-1">Search College</label>
+                    <input type="text" name="search" placeholder="e.g. College Name..." value="{{ request.args.get('search', '') }}" class="w-full form-field">
+                </div>
+
+                <!-- Rank Filter (My Rank) -->
+                <div class="w-full md:w-40 flex-shrink-0">
+                    <label class="block text-sm text-gray-600 font-bold mb-1">My Rank</label>
+                    <input type="number" min="0" name="rank" placeholder="e.g. 5000" value="{{ request.args.get('rank', '') }}" class="w-full form-field">
+                </div>
+
+                <!-- Score Filter (My Score) -->
+                <div class="w-full md:w-40 flex-shrink-0">
+                    <label class="block text-sm text-gray-600 font-bold mb-1">My Score</label>
+                    <input type="number" step="0.01" min="0" name="experience" placeholder="e.g. 85.50" value="{{ request.args.get('experience', '') }}" class="w-full form-field">
+                </div>
+
+                <!-- Category Filter -->
+                <div class="w-full md:w-48 flex-shrink-0">
+                    <label class="block text-sm text-gray-600 font-bold mb-1">Category</label>
+                    <select name="category" class="w-full form-field form-select">
+                        <option value="">All Categories</option>
+                        {% for c in categories %}
+                        <option value="{{ c }}" {% if c == selected_category %}selected{% endif %}>{{ c }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <!-- Course Name Button -->
+                <button type="button" onclick="openModal()" class="flex-grow bg-gradient-to-r from-blue-500 to-teal-400 hover:from-blue-600 hover:to-teal-500 text-white px-6 py-3 rounded-xl font-bold transition shadow-lg transform active:scale-95 flex items-center justify-center gap-2 h-[50px]">
+                    <span id="specBtnText">{{ selected_specialty if selected_specialty else 'Select Course' }}</span> ▾
+                </button>
+            </form>
+        </div>
+
+        <!-- Grid -->
+        <div id="doctorsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {% if request.args.get('specialty') %}
+            {% for doctor in doctors %}
+            <div class="glass-card p-6 flex flex-col items-center text-center">
+                <div class="w-full h-40 rounded-xl bg-gradient-to-br from-blue-200 to-teal-200 mb-4 flex items-center justify-center">
+                    <span class="text-4xl">🏫</span>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 cursor-pointer hover:text-blue-600 transition" onclick="openDetailsModal(this.parentElement.querySelector('button'))">{{ doctor.name }}</h3>
+                
+                <div class="w-full mt-4 space-y-2 text-left px-2">
+                    <div class="flex justify-between border-b border-gray-100 pb-2">
+                        <span class="text-gray-500 text-xs font-bold uppercase">Branch</span>
+                        <span class="text-gray-800 font-semibold text-sm truncate w-32 text-right">{{ doctor.specialty }}</span>
+                    </div>
+                    <div class="flex justify-between border-b border-gray-100 pb-2">
+                        <span class="text-gray-500 text-xs font-bold uppercase">Status</span>
+                        <span class="text-gray-800 font-semibold text-sm truncate w-32 text-right">{{ doctor.status }}</span>
+                    </div>
+                    
+                    <div class="mt-3 bg-gray-50 p-3 rounded-xl">
+                        <p class="text-xs font-bold text-gray-500 uppercase mb-2">Cutoffs</p>
+                        {% for cutoff in doctor.cutoffs %}
+                        <div class="flex justify-between text-sm border-b border-gray-200 last:border-0 pb-1 mb-1 last:pb-0 last:mb-0">
+                            <span class="text-gray-700">{{ cutoff.qualification }}</span>
+                            <span class="font-bold text-green-600">{{ cutoff.percentile }}</span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <button onclick="openDetailsModal(this)" data-doctor="{{ doctor | tojson | forceescape }}" class="w-full mt-4 py-3 bg-white border-2 border-blue-500 text-blue-600 hover:bg-blue-50 rounded-xl font-bold transition shadow-sm transform active:scale-95">
+                    View Details
+                </button>
+            </div>
+            {% else %}
+            <div class="col-span-full text-center py-10">
+                <p class="text-gray-600 text-xl">No colleges found matching your criteria.</p>
+            </div>
+            {% endfor %}
+            {% else %}
+            <div class="col-span-full text-center py-10">
+                <p class="text-gray-600 text-xl font-bold">👈 Please select a Specialty to view colleges.</p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Course Name Modal -->
+    <div id="specModal" class="modal-overlay" onclick="closeModal(event)">
+        <div class="modal-content animate__animated animate__zoomIn">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold text-gray-800">Choose Course</h2>
+                <button onclick="document.getElementById('specModal').style.display='none'" class="text-gray-400 hover:text-gray-600 text-3xl">&times;</button>
+            </div>
+            
+            <div class="mb-4">
+                <input type="text" id="branchSearch" onkeyup="filterCourses()" placeholder="Search courses..." class="w-full form-field">
+            </div>
+
+            <div class="spec-grid">
+                <div class="spec-item {{ 'active' if not selected_specialty }}" onclick="selectSpecialty('')">
+                    <div class="icon">🏫</div>
+                    <div class="text">All Courses</div>
+                </div>
+                {% for spec in specialties %}
+                <div class="spec-item {{ 'active' if spec.name == selected_specialty }}" onclick="selectSpecialty('{{ spec.name }}')">
+                    <div class="icon">{{ spec.icon }}</div> 
+                    <div class="text">{{ spec.name }}</div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Details Modal -->
+    <div id="detailsModal" class="modal-overlay" onclick="if(event.target.id==='detailsModal') { this.style.display='none'; document.body.classList.remove('modal-open'); }">
+        <div class="modal-content animate__animated animate__zoomIn">
+            <div class="relative h-40 bg-gradient-to-r from-blue-600 to-teal-400 flex items-end p-6 rounded-t-2xl -mx-8 -mt-8 mb-8">
+                <button onclick="document.getElementById('detailsModal').style.display='none'; document.body.classList.remove('modal-open');" class="absolute top-4 right-4 text-white text-4xl font-bold">&times;</button>
+                <h2 id="modalTitle" class="text-2xl font-bold text-white shadow-black/20 drop-shadow-md"></h2>
+            </div>
+            <div class="flex flex-col md:flex-row gap-6">
+                <div class="flex-1 grid grid-cols-2 gap-3">
+                    <div class="bg-blue-50 p-3 rounded-xl border border-blue-100">
+                        <span class="block text-blue-500 text-xs font-bold uppercase">University</span>
+                        <span id="modalUniversity" class="text-sm font-bold text-gray-800"></span>
+                    </div>
+                    <div class="bg-green-50 p-3 rounded-xl border border-green-100">
+                        <span class="block text-green-500 text-xs font-bold uppercase">Score</span>
+                        <span id="modalCutoff" class="text-xl font-extrabold text-green-600"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100 mt-6">
+                <h3 class="text-lg font-bold text-gray-800 mb-4">📋 Admission Details</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-8 text-sm" id="modalAdditionalInfo"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Details Modal Logic
+        function openDetailsModal(btn) {
+            const doc = JSON.parse(btn.dataset.doctor);
+            document.getElementById('modalTitle').innerText = doc.name;
+            document.getElementById('modalUniversity').innerText = doc.university;
+            document.getElementById('modalCutoff').innerText = doc.percentile;
+            
+            let cutoffsHtml = '';
+            if (doc.cutoffs) {
+                cutoffsHtml = '<div class="col-span-2 mt-4"><h4 class="font-bold text-gray-700 mb-2">All Cutoffs</h4><div class="grid grid-cols-1 gap-2">';
+                doc.cutoffs.forEach(c => {
+                    cutoffsHtml += `<div class="flex justify-between bg-white p-2 rounded border border-gray-100">
+                        <span class="text-gray-600 text-sm">${c.qualification}</span>
+                        <span class="font-bold text-gray-800 text-sm">${c.percentile} <span class="text-blue-500 text-xs">(Rank: ${c.rank})</span></span>
+                    </div>`;
+                });
+                cutoffsHtml += '</div></div>';
+            }
+
+            // Generate HTML for other details from CSV
+            const excludeKeys = ['name', 'institute_name', 'university', 'percentile', 'cutoffs', 'image', 'specialty', 'course_name', 'institute_code', 'choice_code', 'rank', 'merit_score', 'qualification', 'category', 'consultation_type', 'seat_type', 'gender', 'quota', 'status', 'stage', 'experience', 'merit_marks', 'score', 'marks_percentile', 'merit_no', 'merit_rank', 'merit', 'name_of_institute', 'college_name', 'institute', 'institution_name', 'type', 'branch_code', 'category1', 'area'];
+            
+            let otherDetailsHtml = '';
+            for (const [key, value] of Object.entries(doc)) {
+                if (!excludeKeys.includes(key) && value !== null && value !== 'N/A' && value !== '') {
+                    const label = key.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+                    otherDetailsHtml += `
+                        <div class="flex flex-col border-b border-gray-200 pb-2">
+                            <span class="text-gray-500 text-xs font-bold uppercase">${label}</span>
+                            <span class="font-bold text-gray-800 text-lg">${value}</span>
+                        </div>
+                    `;
+                }
+            }
+
+            document.getElementById('modalAdditionalInfo').innerHTML = `
+                <div class="flex flex-col border-b border-gray-200 pb-2">
+                    <span class="text-gray-500 text-xs font-bold uppercase">Branch</span>
+                    <span class="font-bold text-gray-800 text-lg">${doc.specialty}</span>
+                </div>
+                <div class="flex flex-col border-b border-gray-200 pb-2">
+                    <span class="text-gray-500 text-xs font-bold uppercase">Institute Code</span>
+                    <span class="font-bold text-gray-800 text-lg">${doc.institute_code}</span>
+                </div>
+                <div class="flex flex-col border-b border-gray-200 pb-2">
+                    <span class="text-gray-500 text-xs font-bold uppercase">Status</span>
+                    <span class="font-bold text-gray-800 text-lg">${doc.status || 'N/A'}</span>
+                </div>
+                <div class="flex flex-col border-b border-gray-200 pb-2">
+                    <span class="text-gray-500 text-xs font-bold uppercase">Quota</span>
+                    <span class="font-bold text-gray-800 text-lg">${doc.gender || 'N/A'}</span>
+                </div>
+                ${otherDetailsHtml}
+                ${cutoffsHtml}
+            `;
+            document.body.classList.add('modal-open');
+            document.getElementById('detailsModal').style.display = 'flex';
+        }
+
+        // Course Modal Logic
+        function openModal() {
+            document.getElementById('specModal').style.display = 'flex';
+        }
+
+        function closeModal(e) {
+            if (e.target.id === 'specModal') {
+                document.getElementById('specModal').style.display = 'none';
+            }
+        }
+
+        function selectSpecialty(specName) {
+            document.getElementById('specialtyInput').value = specName;
+            document.getElementById('specBtnText').innerText = specName || 'Select Course';
+            document.getElementById('specModal').style.display = 'none';
+            updateGrid(); // Trigger update
+        }
+
+        function filterCourses() {
+            const input = document.getElementById('branchSearch');
+            const filter = input.value.toLowerCase();
+            const items = document.querySelectorAll('#specModal .spec-item');
+
+            for (let i = 0; i < items.length; i++) {
+                const textDiv = items[i].querySelector(".text");
+                if (textDiv) {
+                    const txtValue = textDiv.textContent || textDiv.innerText;
+                    items[i].style.display = txtValue.toLowerCase().indexOf(filter) > -1 ? "" : "none";
+                }
+            }
+        }
+
+        // Real-time Search & Filter Logic
+        const form = document.getElementById('filterForm');
+        const inputs = form.querySelectorAll('input, select');
+        let debounceTimer;
+
+        inputs.forEach(input => {
+            input.addEventListener('input', () => {
+                // Debounce for text inputs
+                clearTimeout(debounceTimer);
+                debounceTimer = setTimeout(updateGrid, 300);
+            });
+            // Also trigger on change for selects
+            input.addEventListener('change', () => {
+                clearTimeout(debounceTimer);
+                debounceTimer = setTimeout(updateGrid, 300);
+            });
+        });
+
+        async function updateGrid() {
+            const formData = new FormData(form);
+            const params = new URLSearchParams(formData);
+            try {
+                const response = await fetch(`/colleges?${params.toString()}`);
+                const text = await response.text();
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(text, 'text/html');
+                const newGrid = doc.getElementById('doctorsGrid');
+                if (newGrid) document.getElementById('doctorsGrid').innerHTML = newGrid.innerHTML;
+            } catch (err) { console.error(err); }
+        }
+    </script>
+</body>
+</html>

@@ -57,3 +57,29 @@ for i in range(1, 5):
             print(f"❌ Permission denied: {output_filename} is open. Please close it.")
     else:
         print(f"⚠️ File not found: {input_filename}")
+
+# Process MTech CAP rounds
+DATA_DIR_MTECH = os.path.join(BASE_DIR, "data", "MTECH_ME")
+for i in range(1, 5):
+    input_filename = f"cap{i}.csv"
+    file_path = os.path.join(DATA_DIR_MTECH, input_filename)
+
+    if os.path.exists(file_path):
+        print(f"Processing MTech: {input_filename}")
+        df = pd.read_csv(file_path)
+        
+        # Clean columns if needed
+        if COMBINED_COL in df.columns:
+            df[["rank", "percentile"]] = df[COMBINED_COL].apply(split_merit_score)
+        
+        # Ensure rank/percentile exist
+        if 'merit_score' in df.columns and 'rank' not in df.columns:
+             df.rename(columns={'merit_score': 'rank'}, inplace=True)
+
+        output_filename = f"cap{i}.csv"
+        output_path = os.path.join(DATA_DIR_MTECH, output_filename)
+        try:
+            df.to_csv(output_path, index=False)
+            print(f"✅ Saved: {output_filename}")
+        except PermissionError:
+            print(f"❌ Permission denied: {output_filename} is open.")

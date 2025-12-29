@@ -47,6 +47,13 @@ def colleges():
             csv_filename = f'MBA_CAP{round_filter}_MHCutOff_2023_24 - MBA_CAP{round_filter}_MHCutOff_2023_24.csv'
             
         csv_path = os.path.join(base_dir, 'data', 'mba', subfolder, csv_filename)
+    elif dept_filter == 'MTECH':
+        # Only load data if round is explicitly selected
+        if request.args.get('round') is None:
+            csv_path = ""
+        else:
+            csv_filename = f'cap{round_filter}.csv'
+            csv_path = os.path.join(base_dir, 'data', 'MTECH_ME', csv_filename)
     else:
         csv_filename = f'polytechnic_cutoff_data_cap_{round_filter}.csv'
         csv_path = os.path.join(base_dir, 'data', 'polytechnic', csv_filename)
@@ -125,6 +132,10 @@ def colleges():
         # Handle Branch Code alias
         if 'choice_code' not in df.columns and 'branch_code' in df.columns:
             df['choice_code'] = df['branch_code']
+
+        # Handle Category alias (e.g. category1)
+        if 'category' not in df.columns and 'category1' in df.columns:
+            df['category'] = df['category1']
 
         # Ensure numeric columns are actually numbers
         if 'percentile' in df.columns:
@@ -233,6 +244,15 @@ def colleges():
                     temp_df = temp_df[(temp_df['rank'] >= min_rank) & (temp_df['rank'] <= max_rank)]
             except ValueError:
                 pass
+        
+        # Filter by Single Rank (My Rank) - Show colleges where cutoff rank is higher (easier) than user rank
+        if rank_filter and not (min_rank_filter or max_rank_filter):
+            try:
+                user_rank = float(rank_filter)
+                if 'rank' in temp_df.columns:
+                    temp_df = temp_df[temp_df['rank'] >= user_rank]
+            except ValueError:
+                pass
 
         # Filter by Category
         if category_filter and 'category' in temp_df.columns:
@@ -252,11 +272,17 @@ def colleges():
 
         # Convert to dictionary list for template
         for _, row in temp_df.iterrows():
-            filtered_doctors.append({
+            doc_dict = row.to_dict()
+            # Clean NaNs for JSON serialization
+            for k, v in doc_dict.items():
+                if pd.isna(v):
+                    doc_dict[k] = None
+            
+            doc_dict.update({
                 "institute_code": row.get('institute_code', 'N/A'),
                 "choice_code": row.get('choice_code', 'N/A'),
                 "name": row.get('institute_name', 'Unknown Institute'),
-                "specialty": row.get('course_name', 'MBA' if dept_filter == 'MBA' else 'MCA' if dept_filter == 'MCA' else 'N/A'),
+                "specialty": row.get('course_name', 'MBA' if dept_filter == 'MBA' else 'MCA' if dept_filter == 'MCA' else 'MTECH' if dept_filter == 'MTECH' else 'N/A'),
                 "experience": row.get('percentile', 0),      # Cutoff
                 "gender": row.get('quota', location_filter if location_filter else 'N/A'), # Quota/Location
                 "qualification": row.get('category', 'N/A'),     # Category
@@ -269,6 +295,7 @@ def colleges():
                 "university": row.get('university', 'N/A'),
                 "status": row.get('status', 'N/A')
             })
+            filtered_doctors.append(doc_dict)
 
     # Render specific template for MCA/MBA AI/MH, otherwise standard template
     if dept_filter == 'MCA':
@@ -281,6 +308,18 @@ def colleges():
             template_name = 'mba_ai.html'
         else:
             template_name = 'mba_mh.html'
+    elif dept_filter == 'MTECH':
+        template_name = 'mtech.html'
+        
+        # Grouping Logic for MTech (Group by College)
+        grouped = {}
+        for doc in filtered_doctors:
+            code = doc['institute_code']
+            if code not in grouped:
+                grouped[code] = doc.copy()
+                grouped[code]['cutoffs'] = []
+            grouped[code]['cutoffs'].append(doc)
+        filtered_doctors = list(grouped.values())
     else:
         template_name = 'doctors.html'
 
@@ -303,7 +342,7 @@ def colleges():
                            selected_seat_type=seat_type_filter,
                            selected_university=university_filter,
                            selected_area=area_filter,
-                           selected_round=round_filter)
+                           selected_round=request.args.get('round') if dept_filter == 'MTECH' else round_filter)
 
 @app.route('/details')
 def details():
@@ -333,6 +372,9 @@ def details():
                     csv_filename = fname
                     break
         csv_path = os.path.join(base_dir, 'data', 'mca', subfolder, csv_filename)
+    elif dept_filter == 'MTECH':
+        csv_filename = f'cap{round_filter}.csv'
+        csv_path = os.path.join(base_dir, 'data', 'MTECH_ME', csv_filename)
     else:
         csv_filename = f'polytechnic_cutoff_data_cap_{round_filter}.csv'
         csv_path = os.path.join(base_dir, 'data', 'polytechnic', csv_filename)
