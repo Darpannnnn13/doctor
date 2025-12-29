@@ -73,6 +73,27 @@
                 </div>
             </div>
 
+            <!-- MBA Card with Split Hover Effect -->
+            <div class="glass-card p-0 relative overflow-hidden group h-full min-h-[250px] flex flex-col justify-center items-center cursor-default">
+                <!-- Default View -->
+                <div class="absolute inset-0 flex flex-col items-center justify-center p-8 transition-all duration-300 group-hover:opacity-0 group-hover:scale-90">
+                    <div class="text-6xl mb-4">💼</div>
+                    <h2 class="text-2xl font-bold text-gray-800">MBA</h2>
+                    <p class="text-gray-500 mt-2">Master of Business Admin</p>
+                </div>
+                <!-- Hover View (Split Buttons) -->
+                <div class="absolute inset-0 flex opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+                    <div onclick="openRoundModal('MBA', 'MH')" class="w-1/2 h-full bg-gradient-to-br from-green-500 to-green-600 flex flex-col items-center justify-center text-white cursor-pointer hover:from-green-600 hover:to-green-700 transition">
+                        <span class="text-4xl mb-2">🏠</span>
+                        <span class="text-2xl font-bold">MH</span>
+                    </div>
+                    <div onclick="openRoundModal('MBA', 'AI')" class="w-1/2 h-full bg-gradient-to-br from-purple-400 to-purple-500 flex flex-col items-center justify-center text-white cursor-pointer hover:from-purple-500 hover:to-purple-600 transition">
+                        <span class="text-4xl mb-2">🇮🇳</span>
+                        <span class="text-2xl font-bold">AI</span>
+                    </div>
+                </div>
+            </div>
+
             <a href="/colleges?department=ME/MTech" class="glass-card p-8 text-center group">
                 <div class="text-6xl mb-4 group-hover:scale-110 transition transform">🔬</div>
                 <h2 class="text-2xl font-bold text-gray-800">ME / M.Tech</h2>
@@ -117,7 +138,8 @@
     <script>
         function openRoundModal(department, quota = '') {
             // Update links based on department and quota
-            const rounds = [1, 2, 3, 4];
+            const maxRounds = department === 'MBA' ? 3 : 4;
+            const rounds = Array.from({length: maxRounds}, (_, i) => i + 1);
             rounds.forEach(r => {
                 const link = document.getElementById(`round${r}`);
                 let url = `/colleges?department=${department}&round=${r}`;
@@ -126,6 +148,9 @@
                 }
                 link.href = url;
             });
+            
+            // Hide round 4 for MBA
+            document.getElementById('round4').style.display = department === 'MBA' ? 'none' : 'block';
             
             document.getElementById('roundModal').style.display = 'flex';
         }

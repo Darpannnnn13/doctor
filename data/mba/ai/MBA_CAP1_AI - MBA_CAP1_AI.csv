@@ -1,0 +1,340 @@
+sr_no,merit_no,score,choice_code,institute_name,course_name,type,seat_type
+1,24,99.99,300110210,"Jamnalal Bajaj Institute of Management Studies, Mumbai",M. M. S.,AI-AI,AI
+2,66,99.97,300210210,"Sydenham Institute of Management Studies & Research & Entrepreneurship Education(SIMSREE), Mumbai",M. M. S.,AI-AI,AI
+3,136,99.92,310710210,"Prin. L. N. Welingkar Institute of Management Development & Research, Mumbai",M. M. S.,AI-AI,AI
+4,227,99.86,313410210,"Bombay St. Xavier College Soc.'s Xavier Institute of Management & Research, Mumbai",M. M. S.,AI-AI,AI
+5,248,99.85,310910210,"S.I.E.S. College of Management Studies, Mumbai",M. M. S.,AI-AI,AI
+6,258,99.83,600110110,"Department of Management Sciences (PUMBA), University of Pune",M. B. A.,AI-AI,AI
+7,263,99.83,600610110,COEP Technological University,M. B. A.,AI-AI,AI
+8,452,99.68,600664010,COEP Technological University,MBA (Business Analytics),AI-AI,AI
+9,463,99.67,310210210,"Chetana's Ramprasad Khandelwal Institute of Management & Research, Mumbai",M. M. S.,AI-AI,AI
+10,675,99.47,310610210,"MET's Institute of Management, Mumbai",M. M. S.,AI-AI,AI
+11,744,99.39,617910110,"Indira College of Engineering & Management, Pune",M. B. A.,AI-AI,AI
+12,831,99.3,310410210,"Lala Lajpatrai Institute of Management, Mumbai",M. M. S.,AI-AI,AI
+13,1296,98.6,310810210,"Rizvi Institute of Management Studies & Research, Mumbai",M. M. S.,AI-AI,AI
+14,1316,98.57,311810210,"Zagdu Singh Chartitable Trust's Thakur Institute of Management Studies & Research, Mumbai",M. M. S.,AI-AI,AI
+15,1423,98.43,311010210,"Vivekanand Education Society's Institute of Management Studies & Research, Mumbai",M. M. S.,AI-AI,AI
+16,1963,97.59,300310210,"Alkesh Dinesh Modi Institute for Financial & Management Studies, Mumbai",M. M. S.,AI-AI,AI
+17,2118,97.29,610310110,"Shree C. E. Society's Indira Institute of Management, Pune",M. B. A.,AI-AI,AI
+18,2769,96.16,311910210,"St. Francis Institute of Management & Research, Mumbai",M. M. S.,AI-AI,AI
+20,3369,95.16,311610210,"Agnel Charities Agnel Seva Sangha's Fr. C. Rodrigues Inst. of Management. Studies, Vashi, Navi Mumbai",M. M. S.,AI-AI,AI
+21,3407,95.03,646010110,"S.C.E.S. Indira School Of Business Studies, Tathwade",M. B. A.,AI-AI,AI
+22,3686,94.5,697610110,Indira Global School of Business,M. B. A.,AI-AI,AI
+23,4029,93.94,310110210,"Bharti Vidyapeeth's Institute of Management Studies & Research, Navi Mumbai",M. M. S.,AI-AI,AI
+24,4180,93.67,311710210,"Gurunanak Institute of Management Studies, Mumbai",M. M. S.,AI-AI,AI
+25,4479,93.05,335010210,"Durgadevi Saraf Institute of Management Studies, Malad (W), Mumbai",M. M. S.,AI-AI,AI
+26,4623,92.78,313910210,"Vidyalankar Institute of Technology,Wadala, Mumbai",M. M. S.,AI-AI,AI
+27,4666,92.76,300410250F,"Jankidevi Bajaj Institute of Management Studies, Santacruz, Mumbai",M. M. S.,AI-AI,AI
+28,4921,92.21,411510110,"Shri Ramdeobaba College of Engineering and Management, Nagpur",M. B. A.,AI-AI,AI
+29,5433,91.48,611010110,"Modern Education Society's Neville Wadia Institute of Management Studies & Research, Pune",M. B. A.,AI-AI,AI
+30,5457,91.39,312010210,"Atharva Educational Trust, Atharva Institute of Management Studies, Mumbai",M. M. S.,AI-AI,AI
+31,5488,91.08,610410110,"Dr. D.Y. Patil Unitech Society's Dr. D. Y. Patil Institute of Management & Research, Pimpri",M. B. A.,AI-AI,AI
+32,6558,89.17,400110110,"Department of Business Management, Rashtrasant Tukadoji Maharaj Nagpur University, Nagpur",M. B. A.,AI-AI,AI
+33,6725,89.01,620710110,"Dr. D. Y. Patil Unitech Society's Dr. D. Y. Patil Institute of Technology, Pimpri, Pune",M. B. A.,AI-AI,AI
+34,6777,89.01,613310110,"Dr. D.Y. Patil Pratishthan's Dr. D. Y. Patil Institute of Management Studies, Akurdi, Pune",M. B. A.,AI-AI,AI
+35,6878,88.54,697663710,Indira Global School of Business,MBA (Services Management),AI-AI,AI
+36,7451,87.56,321810210,"Aldel Education Trust's St. John College of Engineering & Management, Vevoor, Palghar",M. M. S.,AI-AI,AI
+37,7655,87.32,344310210,"Sheila Raheja School of Business Management & Research, Bandra(E), Mumbai.",M. M. S.,AI-AI,AI
+38,8002,86.43,335410210,"Kohinoor Business School, Kurla (West), Mumbai",M. M. S.,AI-AI,AI
+40,8431,85.98,619910110,"Poona Institute of Management Studies & Enterpreneurship, Pune - 411001",M. B. A.,AI-AI,AI
+41,8441,85.98,312310210,"Parle Tilak Vidyalaya Asso.'s Institute of Management, Mumbai",M. M. S.,AI-AI,AI
+42,8446,85.98,610463410,"Dr. D.Y. Patil Unitech Society's Dr. D. Y. Patil Institute of Management & Research, Pimpri",Digital Marketing,AI-AI,AI
+43,8447,85.98,622810110,"Dr. D. Y. Patil Pratishthan's D.Y.Patil Institute of Master of Computer Applications and Management, Akurdi, Pune",M. B. A.,AI-AI,AI
+44,8489,85.74,664110110,"Pune Institute Of Business Management, Pune",M. B. A.,AI-AI,AI
+45,8784,85.24,619916310,"Poona Institute of Management Studies & Enterpreneurship, Pune - 411001",M.B.A.(Information Technology),AI-AI,AI
+46,9097,84.59,311410210,"Mahatma Education Society's Pillai's Institute of Management Studies & Research, New Panvel",M. M. S.,AI-AI,AI
+47,9321,84.04,619962810,"Poona Institute of Management Studies & Enterpreneurship, Pune - 411001",MBA ( Human Resource Development),AI-AI,AI
+48,9555,83.93,678310110,"Saibalaji Education Society, Saibalaji International Institute of Management Sciences,Nere Marunje, Hinjewadi, Pune",M. B. A.,AI-AI,AI
+49,9622,83.7,615410110,"Institute of Industrial & Computer Management & Research, Nigdi, Pune",M. B. A.,AI-AI,AI
+50,9759,83.21,100510110,"Sant Gadge Baba Amravati University,Amravati",M. B. A.,AI-AI,AI
+51,9812,83.21,310510210,"Mahatma Gandhi Mission's Institute of Management Studies & Research, Kamothe",M. M. S.,AI-AI,AI
+52,9900,83.13,610610110,"Institute of Science,Poona's Institute of Business Management & Research, Pune",M. B. A.,AI-AI,AI
+53,10109,82.75,312363110,"Parle Tilak Vidyalaya Asso.'s Institute of Management, Mumbai","MBA - Innovation, Entrepreneurship and Venture Development (IEV)",AI-AI,AI
+54,10267,82.49,335910210,"SASMIRA's Institute of Management Studies & Research, Worli, Mumbai",M. M. S.,AI-AI,AI
+55,11583,79.93,412710110,"Dhananjayrao Gadgil Institute of Co operative Management, Nagpur",M. B. A.,AI-AI,AI
+56,11779,79.85,664163610,"Pune Institute Of Business Management, Pune",MBA(FIN TECH),AI-AI,AI
+57,11856,79.7,664163510,"Pune Institute Of Business Management, Pune",MBA(PROJECT MANAGEMENT),AI-AI,AI
+58,11876,79.7,311310210,"Maratha Mandir's Babasaheb Gawde Institute of Management Studies, Mumbai",M. M. S.,AI-AI,AI
+60,12624,78.29,619610110,"RIIM - The Academy School Of Business Management, Pune",M. B. A.,AI-AI,AI
+61,12831,77.8,611810110,"All India Shri Shivaji Memorial Society's Institute of Management, Pune",M. B. A.,AI-AI,AI
+62,13067,77.46,618610210,"Indsearch Institute Of Management Studies & Research, Pune",M. M. S.,AI-AI,AI
+63,13122,76.94,611910110,"PIBM- Tirupati Institute of Management, Pune",M. B. A.,AI-AI,AI
+64,13486,76.73,317310210,"Deccan Education Society's Navinchandra Mehta Institute of Technology & Development, Dadar, Mumbai",M. M. S.,AI-AI,AI
+65,13537,76.73,611310110,"Sinhgad Technical Education Society's Sinhgad Institute of Management, Vadgaon (Budruk), Pune",M. B. A.,AI-AI,AI
+66,13696,76.59,614110110,"Jaywant Shikshan Prasarak Mandal's,Rajarshi Shahu College of Engineering, Tathawade, Pune",M. B. A.,AI-AI,AI
+67,13756,76.39,341910210,"Sir M Visvesvaraya Institute of Management Studies & Research, Wadala, Mumbai",M. M. S.,AI-AI,AI
+68,13851,75.86,617810110,"Sinhgad Technical Education Society's Smt. Kashibai Navale College of Engineering,Vadgaon,Pune",M. B. A.,AI-AI,AI
+69,14413,74.82,200110110,"Dr. B. A. M.University Dept. Of Management Science, Aurangabad",M. B. A.,AI-AI,AI
+70,14525,74.82,512010110,"MET's Institute of Management, Adgaon, Nashik",M. B. A.,AI-AI,AI
+71,14767,74.4,416710110,"Yeshwantrao Chavan College of Engineering,Wanadongri, Nagpur",M. B. A.,AI-AI,AI
+72,15517,72.86,619210110,"Pimpri Chinchwad Education Trust's S.B. Patil Institute of Management, Nigdi, Pune",M. B. A.,AI-AI,AI
+73,15602,72.86,110110110,"Shri Sant Gajanan Maharaj College of Engineering,Shegaon",M. B. A.,AI-AI,AI
+74,15627,72.86,313010210,"VPM's Dr. V.N. Bedekar Institute Of Management Studies, Mumbai",M. M. S.,AI-AI,AI
+75,15883,72.48,663110110,"Modern Institute of Business Management, Pune",M. B. A.,AI-AI,AI
+76,15992,72.48,311510210,"Anjuman-I-Islam's Allana Institute of Management Studies, Mumbai",M. M. S.,AI-AI,AI
+77,16008,72.48,410210110,"Param Poojya Dr. Babasaheb Ambedkar Smarak Samiti Dr. Ambedkar Department of Management Studies & Research, Nagpur",M. B. A.,AI-AI,AI
+78,17465,69.34,312710210,"NCRD's Sterling Institute of Management Studies, Navi Mumbai",M. M. S.,AI-AI,AI
+80,18293,68.21,512110110,"K. K. Wagh Institute of Engineering Education and Research, Nashik",M. B. A.,AI-AI,AI
+81,18328,68.21,600210110,"Department of Commerce & Management, Shivaji University, Kolhapur",M. B. A.,AI-AI,AI
+82,18641,67.17,315110210,"Vishweshwar Education Society's Indira Institute of Business Management, Navi Mumbai",M. M. S.,AI-AI,AI
+83,18836,67.05,661410150F,"Sadhu Vaswani Institute Of Management Studies For Girls, Koregaon, Pune",M. B. A.,AI-AI,AI
+84,19042,66.85,110710110,"P. R. Pote (Patil) Education & Welfare Trust's Group of Institution(Integrated Campus), Amravati",M. B. A.,AI-AI,AI
+85,19139,66.44,618910110,"Dr. D. Y. Patil School Of Management, Lohegaon,Pune",M. B. A.,AI-AI,AI
+86,19345,66.27,618610110,"Indsearch Institute Of Management Studies & Research, Pune",M. B. A.,AI-AI,AI
+87,19491,66.27,618310110,"Al-Ameen Educational and Medical Foundation, College of Engineering, Koregaon, Bhima",M. B. A.,AI-AI,AI
+88,20205,64.86,610810110,"Marathwada Mitra Mandal's Institute of Mangement Education Research & Training, Pune",M. B. A.,AI-AI,AI
+89,20475,63.77,610710110,"Poona District Education Association's, Mahatma Phule Institute of Management & Computer Studies, Pune",M. B. A.,AI-AI,AI
+90,20608,63.77,613910110,"Progressive Education Society's Modern College of Engineering, Pune",M. B. A.,AI-AI,AI
+91,20933,63.39,679810110,"Sri Balaji Education Society International School of Management & Research, Wadki, Pune",M. B. A.,AI-AI,AI
+92,21056,63.29,336010210,"GNVS Institute of Management, Sion-Koliwada(E), Mumbai",M. M. S.,AI-AI,AI
+93,21117,63.1,654810110,"Suryadatta Educational Foundation, Suryadatta Institute of Business Management and Technology, Pune",M. B. A.,AI-AI,AI
+94,21167,63.1,313610210,"Oriental Education Society Oriental Institute of Management, Navi Mumbai",M. M. S.,AI-AI,AI
+95,21183,63.1,615610110,"Marathwada Mitra Mandal's College of Engineering, Karvenagar, Pune",M. B. A.,AI-AI,AI
+96,21261,63.1,613110110,"Sinhgad Institute of Management and Computer Applications, Pune",M. B. A.,AI-AI,AI
+97,21310,63.1,500110110,"Department of Management Studies, North Maharashtra University, Jalgaon",M. B. A.,AI-AI,AI
+98,21737,61.77,616410110,"Psd Shastri Educational Foundation's Asma Institute Of Management, Pune",M. B. A.,AI-AI,AI
+100,21975,61.1,511410110,"Gokhale Education Society's J. D. C. Bytco Institute of Management Studies & Research, Nashik",M. B. A.,AI-AI,AI
+101,21995,61.1,111410110,"Sipna Shikshan Prasarak Mandal College of Engineering & Technology, Amravati",M. B. A.,AI-AI,AI
+102,22179,61.09,619710110,Aditya Institute of Management- AIMS,M. B. A.,AI-AI,AI
+103,22191,61.01,539810110,"Ashoka Business School, Nashik",M. B. A.,AI-AI,AI
+104,22349,61.01,410710110,"Yugantar Education Society's Tirpude Institute of Management Education, Nagpur",M. B. A.,AI-AI,AI
+105,22755,60.16,612910110,"Jayawant Shikshan Prasarak Mandal's Jayawant Institute of Management Studies, Tathawade Pune-411033",M. B. A.,AI-AI,AI
+106,22770,60.13,614510110,"JSPM'S Jaywantrao Sawant College of Engineering,Pune",M. B. A.,AI-AI,AI
+107,22820,60.13,315510210,"SYCSPM'S Sinhgad Institute of Business Management, Chandivali, Powai, Mumbai",M. M. S.,AI-AI,AI
+108,22904,60.13,410810110,"G. S. College of Commerce & Economics Department Of Management Sciences And Research, Nagpur",M. B. A.,AI-AI,AI
+109,22959,60.13,352910110,Smt Parmeshwaridevi Durgadutt Tibrewala Institute of Management and Research,M. B. A.,AI-AI,AI
+110,23000,59.7,316010210,"Mahatma Edu.Soc.'s Pillai's HOC Institute of Management Studies & Research, Khalapur Dist. Raigadh",M. M. S.,AI-AI,AI
+111,23073,59.43,614310110,"JSPM's Jayawantrao Sawant Institute of Management & Research, Hadapsar, Pune",M. B. A.,AI-AI,AI
+112,23081,59.43,662610110,"Arihant Institute Of Business Management, Bawdhan",M. B. A.,AI-AI,AI
+113,23629,58.26,411610110,"Ankush Shikshan Sanstha's G.H.Raisoni College of Engineering, Nagpur",M. B. A.,AI-AI,AI
+114,23861,58.26,613210110,"Sinhgad Institute of Business Administration and Research, Pune",M. B. A.,AI-AI,AI
+115,23889,58.26,110210110,"Vidya Bharati Mahavidyalaya Department of Research and PG Studies in Science & Management, Amravati",M. B. A.,AI-AI,AI
+116,23890,58.26,630710110,"Dhole Patil Education Society, Dhole Patil College of Engineering, Wagholi, Tal. Haveli",M. B. A.,AI-AI,AI
+117,24175,58.12,621210110,"KIT's Institute of Management Education & Research, Kolhapur",M. B. A.,AI-AI,AI
+118,24627,56.45,636610150F,"Saibalaji Education Society, International Institute of Management & Human Resource Development(W), Nere Marunje, Pune",M. B. A.,AI-AI,AI
+120,25464,55.15,689910110,"Chhatrapati Shahu Institute of Business Education & Research, Kolhapur",M. B. A.,AI-AI,AI
+121,25552,55.15,510910110,"Sandip Foundation, Sandip Institute of Technology and Research Centre, Mahiravani, Nashik",M. B. A.,AI-AI,AI
+122,25576,55.15,110510110,"Prof. Ram Meghe Institute of Technology & Research, Amravati",M. B. A.,AI-AI,AI
+123,25637,55.15,610210110,"Audyogik Shikshan Mandal's Institute of Business Management & Research MBA Institute, Pune",M. B. A.,AI-AI,AI
+124,25653,55.15,511310110,"Nashik District Maratha Vidya Prasarak Samaj's Institute of Management Research & Technology, Nashik",M. B. A.,AI-AI,AI
+125,25922,54.03,620510110,"Sinhgad Institute of Business Administration and Computer Application, Lonavala",M. B. A.,AI-AI,AI
+126,26058,54.03,314910210,"Shree Shankar Narayan Education Trust's Rohidas Patil Institute of Management Studies, Bhayandar",M. M. S.,AI-AI,AI
+127,26364,53.77,622210110,"Dattajirao Kadam Technical Education Society's Textile & Engineering Institute, Ichalkaranji.",M. B. A.,AI-AI,AI
+128,26657,52.56,344610210,"Kala Vidyalaya Trust, Kala Institute of Management Studies & Research, Kandivali",M. M. S.,AI-AI,AI
+129,26909,52.17,654710110,"Suryadatta Educational Foundation, Suryadatta Institute of Management and Mass Communication, Pune",M. B. A.,AI-AI,AI
+130,26942,52.17,615810110,"Rajmata Jijau Shikshan Prasarak Mandal's Institute of Computer and Management Research, Dudulgaon, Pune",M. B. A.,AI-AI,AI
+131,27041,52.17,112110110,"Shri Hanuman Vyayam Prasarak Mandals College of Engineering & Technology, Amravati",M. B. A.,AI-AI,AI
+132,27081,52.17,615510110,"G.H.Raisoni College of Engineering & Management, Wagholi, Pune",M. B. A.,AI-AI,AI
+133,27125,52.17,613510110,"Alard Institute of Management Sciences, Pune",M. B. A.,AI-AI,AI
+134,27247,52.12,321910210,"Koti Vidya Charitable Trust's Smt. Alamuri Ratnamala Institute of Engineering and Technology, Sapgaon, Tal. Shahapur",M. M. S.,AI-AI,AI
+135,27834,50.95,661510110,"ISMS Sankalp Business School, Pune",M. B. A.,AI-AI,AI
+136,28083,50.35,321010210,"Excelsior Education Society's K.C. College of Engineering and Management Studies and Research, Kopri, Thane (E)",M. M. S.,AI-AI,AI
+137,28177,50.34,631564110,"Holy-Wood Academy's Sanjeevan Engineering and Technology Institute, Panhala",MBA Information Technology SystemsÂ Management,AI-AI,AI
+138,28200,50.34,621410110,"K. E. Society's Rajarambapu Institute of Technology, Walwa, Sangli",M. B. A.,AI-AI,AI
+140,28363,50.09,613710110,"Vidya Pratishthan Institute of Information Technology, Baramati, Pune",M. B. A.,AI-AI,AI
+141,28369,49.86,303363110,"Dr. Babasaheb Ambedkar Technological University, Lonere","MBA - Innovation, Entrepreneurship and Venture Development (IEV)",AI-AI,AI
+142,28477,49.08,316110210,Viva Institute of Management and Research (Viva School of Management and Research),M. M. S.,AI-AI,AI
+143,28672,49.08,130264010,"Sushila Suryawanshi Management Institute of Technology Advancement, Rahatgaon,Â Amravati",MBA (Business Analytics),AI-AI,AI
+144,29126,48.55,674110110,"Sinhgad Technical Education Society's S.K.N. Sinhgad School of Business Management, Ambegaon, Tal. Haveli Dist. Pune",M. B. A.,AI-AI,AI
+145,29169,48.55,511316310,"Nashik District Maratha Vidya Prasarak Samaj's Institute of Management Research & Technology, Nashik",M.B.A.(Information Technology),AI-AI,AI
+146,29265,48.51,511110110,"B. P. Hivale Education Society's Institute of Management Studies Career Development Research, Ahmednagar",M. B. A.,AI-AI,AI
+147,29303,48.51,414210110,"Ankush Shikshan Sanstha's G. H. Raisoni Institute of Engineering & Technology, Nagpur",M. B. A.,AI-AI,AI
+148,29619,47,675510110,"JSPM Narhe Technical Campus, Pune.",M. B. A.,AI-AI,AI
+149,29624,47,616710110,"Kamla Education Society's Pratibha Institute of Business Management, Chinchwad, Pune",M. B. A.,AI-AI,AI
+150,29924,46.52,410910110,"Datta Meghe Institute of Management Studies, Nagpur",M. B. A.,AI-AI,AI
+151,29965,46.52,538610110,"Dr. B.V. Hiray College of Management & Research Centre, Malegaon.",M. B. A.,AI-AI,AI
+152,30065,46.52,616810110,"Shikshan Maharshi Dr. D.Y. Patil Centre for Management & Research, Chikhali , Pune",M. B. A.,AI-AI,AI
+153,30141,46.5,613610110,"Sinhgad Technical Education Society, Sinhgad Business School, Erandwane, Pune",M. B. A.,AI-AI,AI
+154,30446,45.67,200310110,"Swami Ramanand Teerth Marathwada University, School of Commerce & Management Science, Nanded",M. B. A.,AI-AI,AI
+155,30494,45.67,611710110,"Shri Shivaji Maratha Societys Institute of Management & Research, Pune",M. B. A.,AI-AI,AI
+156,30657,45.45,660810110,"Institute of Technical Education, Research and Management, Akurdi",M. B. A.,AI-AI,AI
+157,30875,45.45,611410150F,"Maharshi Karve Sreeshikshan Sanstha's Smt. Hiraben Nanavati Instiute of Management & Research for Women, Pune",M. B. A.,AI-AI,AI
+158,30901,45.45,411210110,"Priyadarshini Lokmanya Tilak Institute of Management Studies & Research, Nagpur",M. B. A.,AI-AI,AI
+160,30957,45.45,683610110,"Dr.D.Y.Patil Institute Of Management & Entrepreneur Development,Talegaon",M. B. A.,AI-AI,AI
+161,31002,44.96,620810110,"Deccan Education Society's Chintamanrao Institute of Management Development & Research, Sangli",M. B. A.,AI-AI,AI
+162,31384,44.35,694110150FU,"Janaki Devi Bajaj Institute Of Management Studies And Research, Pune",M. B. A.,AI-AI,AI
+163,31396,44.17,510310110,"Shri Shivaji Vidya Prasarak Sanstha's Late Bapusaheb Shivaji Rao Deore College of Engineering,Dhule",M. B. A.,AI-AI,AI
+164,31595,43.85,621110110,"S.A.P.D.J. Pathshala's Hirachand Nemchand College of Commerce Department of Management Studies, Solapur",M. B. A.,AI-AI,AI
+165,31853,43.13,315310210,"Humera Khan Institute Of Mangement Studies & Reserch, Mumbai",M. M. S.,AI-AI,AI
+166,32021,42.85,618810110,"Eagle Education Society's Unique Institute of Management, Pune",M. B. A.,AI-AI,AI
+167,32033,42.76,518662910,"R. C. Patel Institute of Pharmaceutical Education and Research, Shirpur",MBA ( Finance ),AI-AI,AI
+168,32071,42.76,677210110,"NBN Sinhgad Technical Institutes Campus, Pune",M. B. A.,AI-AI,AI
+169,32181,42.15,517310110,"SNJB's Late Sau. Kantabai Bhavarlalji Jain College of Engineering, (Jain Gurukul), Neminagar,Chandwad,(Nashik)",M. B. A.,AI-AI,AI
+170,32243,42.15,110610110,"Hari Kishan Jaju Education Sanstha's,College of Management & Computer Science, Yavatmal",M. B. A.,AI-AI,AI
+171,32377,41.78,461510110,"Govindram Seksaria College of Commerce,Wardha",M. B. A.,AI-AI,AI
+172,32564,41.78,516010110,"Sanjivani Rural Education Society's Sanjivani College of Engineering, Kopargaon",M. B. A.,AI-AI,AI
+173,32584,41.78,314710210,"Saraswati Education Society, Yadavrao Tasgaonkar Institute of Engineering & Technology, Karjat",M. M. S.,AI-AI,AI
+174,32893,41.12,696610110,"S.P.Mandali's Prin.N.G.Naralkar Institute Of Career Development And Research, Pune",M. B. A.,AI-AI,AI
+175,33093,41.12,611210110,"Shivnagar Vidyaprasarak Mandal's Institute of Management, Baramati",M. B. A.,AI-AI,AI
+176,33121,41.12,620910110,"Deshbhakta Ratnappa Kumbhar College of Commerce, Kolhapur",M. B. A.,AI-AI,AI
+177,33434,39.95,315910210,"JNIESTR's,Rajeev Gandhi College of Management Studies, Navi Mumbai",M. M. S.,AI-AI,AI
+178,33656,39.92,613410110,"Siddhant Institute Of Business Management, Pune",M. B. A.,AI-AI,AI
+180,33926,39.07,413710110,"Sir Shantilal Badjate Charitable Trust's S. B. Jain Institute of technology, Management & Research, Nagpur",M. B. A.,AI-AI,AI
+181,34129,38.47,211310110,"G. S. Mandal's Maharashtra Institute of Technology, Aurangabad",M. B. A.,AI-AI,AI
+182,34150,38.47,612310110,"S.N.G. Institute of Management & Research, Jaidwadi, Pune",M. B. A.,AI-AI,AI
+183,34356,38.3,312110210,"Sahajeevan Shikshan Sanstha's Madanbhai Sura Institute of Business Management, Khed Dist. Ratnagiri",M. M. S.,AI-AI,AI
+184,34413,38.3,211410110,"Deogiri Institute of Engineering and Management Studies, Aurangabad",M. B. A.,AI-AI,AI
+185,34505,38.3,412210110,"G. H. Raisoni Institute of Management & Research, Khaparkheda, Nagpur",M. B. A.,AI-AI,AI
+186,34526,38.3,414710110,"K.D.K. College of Engineering, Nagpur",M. B. A.,AI-AI,AI
+187,34783,38.14,612710110,"Shrinath Shikshan Prasarak Mandal, R.M. Dhariwal Sinhgad Management School, Pune",M. B. A.,AI-AI,AI
+188,34810,38.14,315710210,"Shree Ghatkopar Sarvajanik Jivdaya Khatur's Aruna Manharlal Shah Institute of Management & Research, Ghatkopar",M. M. S.,AI-AI,AI
+189,34823,37.59,312810210,"Mandar Education Society's Rajaram Shinde College of Master of Business Adminstration, Chiplun",M. M. S.,AI-AI,AI
+190,34980,37.47,621010110,"Rayat Shikshan Sanstha's Karmaveer Bhaurao Patil Institute of Management Studies & Research, Satara",M. B. A.,AI-AI,AI
+191,35086,37.09,616510110,"Nav Sahyadri Charitable Trust's Institute of Business Management & Research, Chakan, Pune",M. B. A.,AI-AI,AI
+192,35098,37.09,662710110,"Camp Education Society's Rasiklal M Dhariwal Institute of Management, Nigdi, Pune",M. B. A.,AI-AI,AI
+193,35240,36.51,315810210,"Saket Gyanpeeth's, Saket College of management, Kalyan",M. M. S.,AI-AI,AI
+194,35348,35.85,622410110,"Shri Venkateshwara shikshan Sanstha's Venkteshwara Institute of Management, Peth Naka",M. B. A.,AI-AI,AI
+195,35678,35.03,681210110,"Progressive Education Society's Modern Institute of Business Studies, Nigdi, Pune",M. B. A.,AI-AI,AI
+196,35823,35.03,512410110,"Jagadamba Education Soc. Nashik's S.N.D. College of Engineering & Reserch, Babulgaon",M. B. A.,AI-AI,AI
+197,35833,35.03,532410110,"Amrutvahini Institute of Management & Business Administration, Sangamner",M. B. A.,AI-AI,AI
+198,36073,34.83,533010110,"PUNE VIDYARTHI GRIHAâ€™S COLLEGE OF ENGINEERING & SHRIKRUSHNA S. DHAMANKAR INSTITUT MANAGEMENT, NASHIK",E OF M. B. A.,AI-AI,AI
+200,36255,34.82,510163310,"Khandesh College Education Society's Institute of Management & Research, Jalgaon",(MBA)Pharmaceutical Management,AI-AI,AI
+201,36302,34.82,516210110,"Amrutvahini Sheti & Shikshan Vikas Sanstha's Amrutvahini College of Engineering, Sangamner",M. B. A.,AI-AI,AI
+202,36466,34.77,627410110,"Pune Vidyarthi Griha's College of Engineering and Technology and G K Pate(Wani) Institute of Management, Pune",M. B. A.,AI-AI,AI
+203,36473,34.77,678010110,"D.Y.Patil Education Society's,D.Y.Patil Technical Campus, Faculty of Engineering & Faculty of Management,Talsande,Kolhapur.",M. B. A.,AI-AI,AI
+204,36594,33.16,621463110,"K. E. Society's Rajarambapu Institute of Technology, Walwa, Sangli","MBA - Innovation, Entrepreneurship and Venture Development (IEV)",AI-AI,AI
+205,36891,33.13,313310210,"Swayamsiddhi Mitra Sangh's College of Management & Research, Thane",M. M. S.,AI-AI,AI
+206,36923,33.13,615210110,"Zeal Education Society's Zeal Institute of Business Administration, Computer Application and Research, Pune",M. B. A.,AI-AI,AI
+207,37069,32.96,673110110,"Anekant Institute of Management Studies, Baramati",M. B. A.,AI-AI,AI
+208,37147,32.92,629310110,"Kai Amdar Bramhadevdada Mane Shikshan & Samajik Prathistan's Bramhadevdada Mane Institute of Technology, Solapur",M. B. A.,AI-AI,AI
+209,37197,32.54,511610110,"Navjeevan Institute of Management, Nashik",M. B. A.,AI-AI,AI
+210,37220,32.54,418110110,"Swaminarayan Siddhanta Institute Of Technology, Nagpur",M. B. A.,AI-AI,AI
+211,37346,32.54,616610110,"Audyogik Shikshan Mandal's Institute of Professional Studies, Pimpri Waghere, Pune",M. B. A.,AI-AI,AI
+212,37513,31.21,461310110,"Suryodaya College of Engineering & Technology, Nagpur",M. B. A.,AI-AI,AI
+213,37570,31.21,511362810,"Nashik District Maratha Vidya Prasarak Samaj's Institute of Management Research & Technology, Nashik",MBA ( Human Resource Development),AI-AI,AI
+214,37618,31.21,676010110,"Lotus Business School, Pune",M. B. A.,AI-AI,AI
+215,37793,31.21,620010110,"Nav-Sahyadri Charitable Trust's Institute of Management Science,Pimpri BK, Khed",M. B. A.,AI-AI,AI
+216,37808,31.21,675710110,"Yashoda Technical Campus, Wadhe, Satara.",M. B. A.,AI-AI,AI
+217,38188,30.56,512910110,"Shri.Dattakrupa Shaikshnik & Krushi GramVikas Pratisthan's Sai Krupa Institute of Management Science, Ghargaon, Ahmednagar",M. B. A.,AI-AI,AI
+218,38276,30.56,513010110,"Brahma Valley College of Engineering & Research, Trimbakeshwar, Nashik",M. B. A.,AI-AI,AI
+220,38507,29.97,662810110,"Dattakala Group Of Institutions, Swami - Chincholi Tal. Daund Dist. Pune",M. B. A.,AI-AI,AI
+221,38508,29.97,410610110,"Shikshan Prasarak Mandal's Dept. of Management Studies, Nabira Mahavidyalaya, Nagpur",M. B. A.,AI-AI,AI
+222,39021,28.65,320210210,Rajendra Mane College of Engineering & Technology Ambav Deorukh,M. M. S.,AI-AI,AI
+223,39040,28.03,612110110,"Rajgad Dnyanpeeths Rajgad Institute of Management Development Research, Dhankawadi, Pune",M. B. A.,AI-AI,AI
+224,39079,27.88,512510110,"Pravara Rural Education Society's Sir Visvesvaraya Institute of Technology, Chincholi Dist. Nashik",M. B. A.,AI-AI,AI
+225,39227,27.88,676810110,"P.K. Technical Campus, Pune.",M. B. A.,AI-AI,AI
+226,39478,27.72,613810110,"Genba Sopanrao Moze Trust Parvatibai Genba Moze College of Engineering,Wagholi, Pune",M. B. A.,AI-AI,AI
+227,39579,27.72,213810110,"Matsyodari Shikshan Sansatha's College of Engineering and Technology, Jalna",M. B. A.,AI-AI,AI
+228,39620,27.72,211010110,"Nirmal Krida and Samaj Prabhodhan Trust, Institute of Management, Badnapur",M. B. A.,AI-AI,AI
+229,39702,27.56,511910110,"C.H.M.E. Society's Dr. Moonje Institute for Management & Computer Studies, Nashik",M. B. A.,AI-AI,AI
+230,39763,27.5,619110110,"Shri Bhairavnath Shikshan Prasarak Mandal's Adhalrao Patil Institute of Management and Research, Landewadi",M. B. A.,AI-AI,AI
+231,39832,27.5,511210110,"Padmashree Dr. Vithalrao Vikhe Patil Foundation's Institute of Business Management & Rural Development, Ahmednagar",M. B. A.,AI-AI,AI
+232,39872,27.5,532010110,"Abhinav Education Society's Institute of Management & Business Administration, Akole",M. B. A.,AI-AI,AI
+233,40262,25.5,410510110,"GES Department Of Management Technology N.M.D.PG College Of Arts, Commerce, Law & Management, Gondia",M. B. A.,AI-AI,AI
+234,40546,25.28,343710210,"Sahyadri Institute of Management & Research, Sawarde.",M. M. S.,AI-AI,AI
+235,40572,25.25,413810110,"Jaidev Education Society, J D College of Engineering and Management, Nagpur",M. B. A.,AI-AI,AI
+236,40632,25.25,319410210,"Vidyavardhini's College of Engineering and Technology, Vasai",M. M. S.,AI-AI,AI
+237,40707,25.25,518616510,"R. C. Patel Institute of Pharmaceutical Education and Research, Shirpur",M.B.A.(Marketing Management),AI-AI,AI
+238,40723,25.25,345210210,"Matoshri. Ushatai Jadhav Institute of Management studies & Research Centre, Bhivandi",M. M. S.,AI-AI,AI
+240,40978,24.5,677510110,"Yashaswi Education Society's International Institute of Management Science, Chinchwad, Pune",M. B. A.,AI-AI,AI
+241,40983,24.5,663210110,Navsahyadri Education Society's Group of Institutions,M. B. A.,AI-AI,AI
+242,41036,24.5,622010110,"Shri Vithal Education and Research Institute's College of Engineering, Pandharpur",M. B. A.,AI-AI,AI
+243,41180,24.47,530310110,"Hon. Shri. Babanrao Pachpute Vichardhara Trust, Group of Institutions (Integrated Campus)-Parikrama, Kashti Shrigondha,",M. B. A.,AI-AI,AI
+244,41206,24.47,621710110,"Shri. Balasaheb Mane Shikshan Prasarak Mandal's, Ashokrao Mane Group of Institutions",M. B. A.,AI-AI,AI
+245,41341,24.27,677310110,"Akemi Business School, Mulsi, Pune.",M. B. A.,AI-AI,AI
+246,41529,22.81,313110210,"Hashmatrai and Gangaram Himathmal Mansukhani Institute of Management, Ulhasnagar, Thane",M. M. S.,AI-AI,AI
+247,41616,22.81,515210110,"G H Raisoni Institute of Engineering and Business Management, Jalgaon",M. B. A.,AI-AI,AI
+248,41619,22.81,551010110,Sanjivani Institute of Management Studies,M. B. A.,AI-AI,AI
+249,41639,22.81,697210110,"Shri. Someshwar Shikshan Prasarak Mandals Sharadchandra Pawar Institute of Management & Research, Someshwarnagar,",M. B. A.,AI-AI,AI
+250,41703,22.75,353010110,"M. S. College of Management, Devghar Vada",M. B. A.,AI-AI,AI
+251,41715,22.75,200210110,"Dr. Babasaheb Ambedkar Marathwada University, Sub Centre, Osmanabad",M. B. A.,AI-AI,AI
+252,41776,22.75,612410110,"Kasturi Shikshan Sansta's Institute of Management, Shikhrapur",M. B. A.,AI-AI,AI
+253,41876,22.75,415110110,"Vidarbha Bahu-Uddeshiya Shikshan Sanstha's Tulshiramji Gaikwad Patil College of Engineering & Technology, Nagpur",M. B. A.,AI-AI,AI
+254,41963,22.41,510663210,"Khandesh College Education Society's College Of Engineering And Management, Jalgaon",(MBA)Agribusiness Management,AI-AI,AI
+255,42152,21.36,262410110,"U. D. Pathrikar Institute of Management, At.Post Pathri, Aurangabad",M. B. A.,AI-AI,AI
+256,42165,21.3,130262910,"Sushila Suryawanshi Management Institute of Technology Advancement, Rahatgaon,Â Amravati",MBA ( Finance ),AI-AI,AI
+257,42449,21.3,617410110,"KJ's Educational Institute Trinity Institute of Management & Research, Haveli, Pune",M. B. A.,AI-AI,AI
+258,42630,20.47,412410110,"Amar Seva Mandal's Kamla Nehru Mahavidyalaya, Nagpur",M. B. A.,AI-AI,AI
+260,42809,20.41,676910110,"Rasiklal M. Dhariwal Sinhgad Technical Institutes Campus, Warje, Pune.",M. B. A.,AI-AI,AI
+261,43324,18.67,663810110,"Matrix School of Managment Studies, Ambegaon",M. B. A.,AI-AI,AI
+262,43327,18.65,430610110,"Real Institute Of Management & Research, Beltarodi, Nagpur",M. B. A.,AI-AI,AI
+263,43331,18.6,461410110,"Shantiniketan Business School, Nagpur",M. B. A.,AI-AI,AI
+264,43373,18.57,619510110,"Zeal Education Society's, Zeal Institute of Management and Computer Application, Nahre, Pune",M. B. A.,AI-AI,AI
+265,43403,18.57,629810110,"Zeal Education Society's Zeal College of Engineering & Reserch, Narhe, Pune",M. B. A.,AI-AI,AI
+266,43467,18.57,411410110,"Department of Business Management, C. P. Berar Education Society's College, Nagpur",M. B. A.,AI-AI,AI
+267,43504,18.3,251610110,International Centre Of Excellence In Engineering and Management (ICEEM),M. B. A.,AI-AI,AI
+268,43739,18.24,410610190L,"Shikshan Prasarak Mandal's Dept. of Management Studies, Nabira Mahavidyalaya, Nagpur",M. B. A.,AI-AI,AI
+269,43843,18.24,615010110,"Sharad Chandra Pawar Institute of Management, Otur, Pune",M. B. A.,AI-AI,AI
+270,43884,18.24,532510110,"Global Institute of Management, Velhale Tal. Sangamner Dist. Ahmednagar",M. B. A.,AI-AI,AI
+271,44427,16.66,510410110,"Shramsadhana Bombay Trust, College of Engineering & Technology, Jalgaon",M. B. A.,AI-AI,AI
+272,44502,16.17,413910110,"Samridhi Sarwajanik Charitable Trust, Jhulelal Institute of Technology, Nagpur",M. B. A.,AI-AI,AI
+273,44613,16.11,512310110,"Nashik Gramin Shikshan Prasarak Mandal, Brahma Valley Institute of Management, Anjaneri, Nashik",M. B. A.,AI-AI,AI
+274,44782,15.67,510110110,"Khandesh College Education Society's Institute of Management & Research, Jalgaon",M. B. A.,AI-AI,AI
+275,44903,15.67,600310110,"Department of Management, Punyashlok Ahilyadevi Holkar Solapur University, Solapur",M. B. A.,AI-AI,AI
+276,44972,15.48,617010110,"Abhinav Education Society's Institute of Management and Research, Haveli, Pune",M. B. A.,AI-AI,AI
+277,44992,15.48,512610110,"Ozar Vikas Sanstha's Vishwasattya College of MBA, Ozar.",M. B. A.,AI-AI,AI
+278,44999,15.48,614010110,"Dnyan Kala Krida & Krishi Prathishtan's Maharashtra Institute of Management, Kalamb, Pune",M. B. A.,AI-AI,AI
+280,45139,15.35,412910110,"Mehmuda Shikshan & Mahila Gramin Vikas Bahuuddeshiya Sanstha's, Central India College of Business Management & Studies,",M. B. A.,AI-AI,AI
+281,45271,15.01,211210110,"Shree Yash Pratishthan, Shreeyash College of Engineering and Technology, Aurangabad",M. B. A.,AI-AI,AI
+282,45348,14.77,466210110,"Dr. Arun Motghare Mahavidyalaya MBA, Kosara- Konda, Bhandara",M. B. A.,AI-AI,AI
+283,45826,13.36,210210110,"Rajarshi Shahu Institute of Management, Aurangabad",M. B. A.,AI-AI,AI
+284,46162,12.48,466110110,"Ahirkar Institute of Management Studies, Nagpur",M. B. A.,AI-AI,AI
+285,46208,12.23,621310110,"Chh. Shahu Institute Of Business Edu And Res Vasantraodada Patil Institute Of Management Studies & Research, Sangli",M. B. A.,AI-AI,AI
+286,46344,12.12,510663610,"Khandesh College Education Society's College Of Engineering And Management, Jalgaon",MBA(FIN TECH),AI-AI,AI
+287,46367,11.93,252010110,"D. B. Institute Of Management & Research, Mouza-Mahalngra,Ta.Chakur,Dist.Latur",M. B. A.,AI-AI,AI
+288,46532,11.46,510610110,"Khandesh College Education Society's College Of Engineering And Management, Jalgaon",M. B. A.,AI-AI,AI
+289,46710,10.89,321710210,"Vighnaharata Trust's Shivajirao S. Jondhale College of Engineering & Technology, Shahapur, Asangaon, Dist Thane",M. M. S.,AI-AI,AI
+290,46714,10.78,674510110,"Shrimat Jayshreemaladevi Naik-Nimbalkar Institute of Management Studies, Phaltan Dist-Satara",M. B. A.,AI-AI,AI
+291,46781,10.72,413310110,"Sanmarg Shikshan Sanstha's Smt. Radhikatai Pandav College of Engineering, Nagpur",M. B. A.,AI-AI,AI
+292,46928,10.67,411810110,"Bapurao Deshmukh College of Engineering, Sevagram",M. B. A.,AI-AI,AI
+293,47097,10.38,612010110,"Shri. Khanderai Pratishthans Dnyansagar Institute of Management and Research, Balewadi, Pune",M. B. A.,AI-AI,AI
+294,47192,9.94,689963010,"Chhatrapati Shahu Institute of Business Education & Research, Kolhapur",MBA (Environment),AI-AI,AI
+295,47307,9.62,521910110,"Mahatma Gandhi Vidyamandir's Samajshree Prashantdada Hiray College of Management and Technology, Nashik",M. B. A.,AI-AI,AI
+296,47309,9.62,621610110,"Krishna Foundation Malkapur-Karad's Jaywant Institute of Management, Wathar",M. B. A.,AI-AI,AI
+297,47422,9.14,257110110,"Kishori College of M.B.A., Beed",M. B. A.,AI-AI,AI
+298,47646,8.79,130217810,"Sushila Suryawanshi Management Institute of Technology Advancement, Rahatgaon,Â Amravati",M.B.A.(Marketing),AI-AI,AI
+300,47779,8.71,515263810,"G H Raisoni Institute of Engineering and Business Management, Jalgaon",MBA (Family Managed Business),AI-AI,AI
+301,47861,8.13,620610110,"Pune District Education Association's College of Engineering, Pune",M. B. A.,AI-AI,AI
+302,47930,8.13,681310110,"Swaraj Institute of Management, Vanvasmachi, Tal.Karad, Dist.Satara",M. B. A.,AI-AI,AI
+303,47958,8.13,618410110,"K. J.'s Educational Institut Trinity College of Engineering and Research, Pisoli, Haveli",M. B. A.,AI-AI,AI
+304,48244,7.06,512710110,"Kalyani Charitable Trust, Kalyani Ravindra Sapkal College of Management Studies, Nashik",M. B. A.,AI-AI,AI
+305,48266,7.06,412810110,"Ranibai Agnihotri Institute of Computer Information Technology, Wardha",M. B. A.,AI-AI,AI
+306,48310,7.06,410310110,"Department of Managament Science & Research J.M.Patel College, Bhandara",M. B. A.,AI-AI,AI
+307,48716,6.15,699010110,Jaihind Institute of Management and Research,M. B. A.,AI-AI,AI
+308,48721,5.88,550910110,"Shri Swami Samarth Institute of Management and Technology, Malwadi-Bota",M. B. A.,AI-AI,AI
+309,48722,5.88,414110110,"Shriram Gram Vikas Shikshan Sanstha, Vilasrao Deshmukh College of Engineering and Technology, Nagpur",M. B. A.,AI-AI,AI
+310,48730,5.67,673410110,"Ideal Institute Of Management, Kondigare, Tal Shirol, Kolhapur",M. B. A.,AI-AI,AI
+311,48864,5.58,413410110,"Guru Nanak Institute of Engineering & Technology,Kalmeshwar, Nagpur",M. B. A.,AI-AI,AI
+312,48979,5.46,614410110,"Genba Sopanrao Moze College of Engineering, Baner-Balewadi, Pune",M. B. A.,AI-AI,AI
+313,49249,4.6,225610110,"Foster Development School of Management, Aurangabad",M. B. A.,AI-AI,AI
+314,49264,4.6,413010110,"Shree Sai Shikshan Sanstha, NIT Graduate School of Management, Nagpur",M. B. A.,AI-AI,AI
+315,49340,4.47,262210110,"Jay Bhavani Institute of Management, Badnapur, Jalna",M. B. A.,AI-AI,AI
+316,49489,3.93,257010110,"Mitthulalji Sarda MBA College, Beed",M. B. A.,AI-AI,AI
+317,49524,3.79,699410110,"Arham Management Institute, Manjri Budruk",M. B. A.,AI-AI,AI
+318,49525,3.79,510210110,"Godavari Institute of Management & Research, Jalgaon",M. B. A.,AI-AI,AI
+320,49704,3.42,430710110,"Renaissance Institute Of Management Studies, Datala New Chandrapur",M. B. A.,AI-AI,AI
+321,49713,3.42,256910110,"Suraj Institute of Management, Beed",M. B. A.,AI-AI,AI
+322,49791,3.15,257116510,"Kishori College of M.B.A., Beed",M.B.A.(Marketing Management),AI-AI,AI
+323,49832,2.94,511710110,Pirens Institute Of Business Management And Administration (IBMA) Loni (BK),M. B. A.,AI-AI,AI
+324,49876,2.86,210416510,"Aditya College of MBA, Beed",M.B.A.(Marketing Management),AI-AI,AI
+325,49917,2.82,130216410,"Sushila Suryawanshi Management Institute of Technology Advancement, Rahatgaon,Â Amravati",M.B.A.(Human Resource Management),AI-AI,AI
+326,49928,2.82,210610110,"Lokvikas Educational & Charitable Trust's Marathwada Institute of Management and Research, Aurangabad",M. B. A.,AI-AI,AI
+327,49977,2.74,419210110,"Maitraya Education Society, Nagarjuna Institute of Engineering Technology & Management, Nagpur",M. B. A.,AI-AI,AI
+328,49984,2.74,418810110,"Krushi Jivan Vikas Pratishthan, Ballarpur Institute of Technology, Mouza Bamni",M. B. A.,AI-AI,AI
+329,50015,2.44,257062910,"Mitthulalji Sarda MBA College, Beed",MBA ( Finance ),AI-AI,AI
+330,50023,2.39,532310110,"Sant Dnyaneshwar institute of Management and Business Administration,",M. B. A.,AI-AI,AI
+331,50044,2.39,257162910,"Kishori College of M.B.A., Beed",MBA ( Finance ),AI-AI,AI
+332,50047,2.34,257016510,"Mitthulalji Sarda MBA College, Beed",M.B.A.(Marketing Management),AI-AI,AI
+333,50142,2.24,664410110,"Shri. Ambabai Talim Sanstha's Sanjay Bhokare Group of Institutes, Miraj",M. B. A.,AI-AI,AI
+334,50151,2.24,665010110,"Vishwakarma Dadasaheb Chavan Institute of Management and Research, Malwadi",M. B. A.,AI-AI,AI
+335,50200,1.98,411110110,"Sarvodaya Shikshan Mandal's Sau Leena Kishor Mamidvar Institute of Management Studies & Research, Chandrapur",M. B. A.,AI-AI,AI
+336,50231,1.83,211910110,"Shree Sharda Bhavan Education Society's Institute of Technology & Management, Nanded",M. B. A.,AI-AI,AI
+337,50247,1.83,538510110,"Akole Taluka Education Society,s Technical Campus, Akole, Ahmednagar",M. B. A.,AI-AI,AI
+338,50365,1.43,518663310,"R. C. Patel Institute of Pharmaceutical Education and Research, Shirpur",(MBA)Pharmaceutical Management,AI-AI,AI
+340,50434,1.29,335710210,"S A V Acharya Institute of Management Studies, Shelu, Tal. Karjat",M. M. S.,AI-AI,AI
+341,50468,1.13,631564010,"Holy-Wood Academy's Sanjeevan Engineering and Technology Institute, Panhala",MBA (Business Analytics),AI-AI,AI
+342,50483,1.1,256916410,"Suraj Institute of Management, Beed",M.B.A.(Human Resource Management),AI-AI,AI
+343,50562,0.84,466310110,"Dr. R. G. Bhoyar Arts, Commerce and Science College, Seloo, Wardha",M. B. A.,AI-AI,AI
+344,50589,0.77,335810210,"SAS Institute of Management Studies, Boisar Dist. Thane",M. M. S.,AI-AI,AI
+345,50613,0.66,213610110,"Aditya Engineering College , Beed",M. B. A.,AI-AI,AI
+346,50624,0.64,620410110,"Rastriya Shikshan Mandal's Chetan Dattaji Gaikwad Institute of Management Studies, Pune",M. B. A.,AI-AI,AI
+347,50637,0.61,413510110,"Amar Seva Mandal's Shree Govindrao Vanjari College of Engineering & Technology, Nagpur",M. B. A.,AI-AI,AI
+348,50653,0.5,538010110,"Adsul's Technical Campus, Chas Dist. Ahmednagar",M. B. A.,AI-AI,AI
+349,50704,0.3,200410110,"School of Management, Swami Ramanand Teerth Marathwada University, Sub Centre, Peth, Latur",M. B. A.,AI-AI,AI
+350,50727,0.23,414310110,"Sanmarg Shikshan Sanstha, Mandukarrao Pandav College of Engineering, Bhandara",M. B. A.,AI-AI,AI
+351,50728,0.22,211510110,"Sahyog Sevabhavi Santha's Indira Institute of Management Science, Nanded",M. B. A.,AI-AI,AI
+352,50753,0.14,411010110,vidya shikhan prasarak mandal's central institute of business management Reserch & Development,M. B. A.,AI-AI,AI
+353,50770,0.08,225910110,"Shri Sai Institute of Management & Research, Aurangabad",M. B. A.,AI-AI,AI
+354,50771,0.07,256916510,"Suraj Institute of Management, Beed",M.B.A.(Marketing Management),AI-AI,AI
+355,50776,0.05,210410110,"Aditya College of MBA, Beed",M. B. A.,AI-AI,AI
+356,50781,0.02,412510110,"Green Heaven Institute of Management & Research, Nagpur",M. B. A.,AI-AI,AI

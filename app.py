@@ -38,6 +38,15 @@ def colleges():
                     break
             
         csv_path = os.path.join(base_dir, 'data', 'mca', subfolder, csv_filename)
+    elif dept_filter == 'MBA':
+        if location_filter == 'AI':
+            subfolder = 'AI'
+            csv_filename = f'MBA_CAP{round_filter}_AI - MBA_CAP{round_filter}_AI.csv'  # Assuming similar naming
+        else:
+            subfolder = 'MH'
+            csv_filename = f'MBA_CAP{round_filter}_MHCutOff_2023_24 - MBA_CAP{round_filter}_MHCutOff_2023_24.csv'
+            
+        csv_path = os.path.join(base_dir, 'data', 'mba', subfolder, csv_filename)
     else:
         csv_filename = f'polytechnic_cutoff_data_cap_{round_filter}.csv'
         csv_path = os.path.join(base_dir, 'data', 'polytechnic', csv_filename)
@@ -173,15 +182,17 @@ def colleges():
     specialty_filter = request.args.get('specialty', '')
     cutoff_filter = request.args.get('experience', '') or request.args.get('percentile', '') # Using experience field for Cutoff
     rank_filter = request.args.get('rank', '') or request.args.get('merit_score', '')
+    min_rank_filter = request.args.get('min_rank', '')
+    max_rank_filter = request.args.get('max_rank', '')
     category_filter = request.args.get('category', '')
     seat_type_filter = request.args.get('seat_type', '')
     university_filter = request.args.get('university', '')
     area_filter = request.args.get('area', '')
 
-    # Determine if we should load data (MCA allows loading without specialty)
-    is_mca = (dept_filter == 'MCA')
+    # Determine if we should load data (MCA and MBA allow loading without specialty)
+    is_mca_or_mba = (dept_filter in ['MCA', 'MBA'])
     
-    if (specialty_filter or is_mca) and not df.empty:
+    if (specialty_filter or is_mca_or_mba) and not df.empty:
         # Filter by Branch (Exact Match)
         temp_df = df
         if specialty_filter:
@@ -195,8 +206,8 @@ def colleges():
         if area_filter and 'area' in temp_df.columns:
             temp_df = temp_df[temp_df['area'] == area_filter]
 
-        # Enforce Area selection for MCA MH (Don't show colleges until Area is selected)
-        if dept_filter == 'MCA' and location_filter != 'AI' and not area_filter:
+        # Enforce Rank Range selection for MCA MH and MBA MH (Don't show colleges until Rank Range is selected)
+        if ((dept_filter == 'MCA' and location_filter != 'AI') or (dept_filter == 'MBA' and location_filter != 'AI')) and not (request.args.get('min_rank') and request.args.get('max_rank')):
             temp_df = temp_df.iloc[0:0]
 
         # Filter by Quota (Location)
@@ -213,13 +224,13 @@ def colleges():
             except ValueError:
                 pass
         
-        # Filter by Rank
-        if rank_filter:
+        # Filter by Rank Range
+        if min_rank_filter and max_rank_filter:
             try:
-                user_rank = float(rank_filter)
-                # Show colleges where cutoff rank >= user rank (meaning user qualifies)
+                min_rank = float(min_rank_filter)
+                max_rank = float(max_rank_filter)
                 if 'rank' in temp_df.columns:
-                    temp_df = temp_df[temp_df['rank'] >= user_rank]
+                    temp_df = temp_df[(temp_df['rank'] >= min_rank) & (temp_df['rank'] <= max_rank)]
             except ValueError:
                 pass
 
@@ -245,7 +256,7 @@ def colleges():
                 "institute_code": row.get('institute_code', 'N/A'),
                 "choice_code": row.get('choice_code', 'N/A'),
                 "name": row.get('institute_name', 'Unknown Institute'),
-                "specialty": row.get('course_name', 'MCA' if dept_filter == 'MCA' else 'N/A'),
+                "specialty": row.get('course_name', 'MBA' if dept_filter == 'MBA' else 'MCA' if dept_filter == 'MCA' else 'N/A'),
                 "experience": row.get('percentile', 0),      # Cutoff
                 "gender": row.get('quota', location_filter if location_filter else 'N/A'), # Quota/Location
                 "qualification": row.get('category', 'N/A'),     # Category
@@ -259,12 +270,17 @@ def colleges():
                 "status": row.get('status', 'N/A')
             })
 
-    # Render specific template for MCA AI, otherwise standard template
+    # Render specific template for MCA/MBA AI/MH, otherwise standard template
     if dept_filter == 'MCA':
         if location_filter == 'AI':
             template_name = 'mca_ai.html'
         else:
             template_name = 'mca_mh.html'
+    elif dept_filter == 'MBA':
+        if location_filter == 'AI':
+            template_name = 'mba_ai.html'
+        else:
+            template_name = 'mba_mh.html'
     else:
         template_name = 'doctors.html'
 
@@ -281,6 +297,8 @@ def colleges():
                            selected_gender=location_filter,
                            selected_experience=cutoff_filter,
                            selected_rank=rank_filter,
+                           selected_min_rank=min_rank_filter,
+                           selected_max_rank=max_rank_filter,
                            selected_category=category_filter,
                            selected_seat_type=seat_type_filter,
                            selected_university=university_filter,
