@@ -48,7 +48,6 @@ def colleges():
             csv_filename = f'MBA_CAP{round_filter}_MHCutOff_2023_24 - MBA_CAP{round_filter}_MHCutOff_2023_24.csv'
             
         csv_path = os.path.join(base_dir, 'data', 'mba', subfolder, csv_filename)
-<<<<<<< HEAD
     elif dept_filter == 'MTECH':
         # Only load data if round is explicitly selected
         if request.args.get('round') is None:
@@ -56,7 +55,6 @@ def colleges():
         else:
             csv_filename = f'cap{round_filter}.csv'
             csv_path = os.path.join(base_dir, 'data', 'MTECH_ME', csv_filename)
-=======
     elif dept_filter == 'BCA':
         if location_filter == 'AI':
             subfolder = 'AI'
@@ -82,7 +80,6 @@ def colleges():
                         break
         
         csv_path = os.path.join(search_dir, csv_filename)
->>>>>>> daafe13 (bca)
     else:
         csv_filename = f'polytechnic_cutoff_data_cap_{round_filter}.csv'
         csv_path = os.path.join(base_dir, 'data', 'polytechnic', csv_filename)
@@ -358,11 +355,7 @@ def colleges():
                 "institute_code": row.get('institute_code', 'N/A'),
                 "choice_code": row.get('choice_code', 'N/A'),
                 "name": row.get('institute_name', 'Unknown Institute'),
-<<<<<<< HEAD
-                "specialty": row.get('course_name', 'MBA' if dept_filter == 'MBA' else 'MCA' if dept_filter == 'MCA' else 'MTECH' if dept_filter == 'MTECH' else 'N/A'),
-=======
-                "specialty": row.get('course_name', 'BCA' if dept_filter == 'BCA' else 'MBA' if dept_filter == 'MBA' else 'MCA' if dept_filter == 'MCA' else 'N/A'),
->>>>>>> daafe13 (bca)
+                "specialty": row.get('course_name', 'BCA' if dept_filter == 'BCA' else 'MTECH' if dept_filter == 'MTECH' else 'MBA' if dept_filter == 'MBA' else 'MCA' if dept_filter == 'MCA' else 'N/A'),
                 "experience": row.get('percentile', 0),      # Cutoff
                 "gender": row.get('quota', location_filter if location_filter else 'N/A'), # Quota/Location
                 "qualification": row.get('category', 'N/A'),     # Category
@@ -388,7 +381,6 @@ def colleges():
             template_name = 'mba_ai.html'
         else:
             template_name = 'mba_mh.html'
-<<<<<<< HEAD
     elif dept_filter == 'MTECH':
         template_name = 'mtech.html'
         
@@ -401,13 +393,11 @@ def colleges():
                 grouped[code]['cutoffs'] = []
             grouped[code]['cutoffs'].append(doc)
         filtered_doctors = list(grouped.values())
-=======
     elif dept_filter == 'BCA':
         if location_filter == 'AI':
             template_name = 'bca_ai.html'
         else:
             template_name = 'bca_mh.html'
->>>>>>> daafe13 (bca)
     else:
         template_name = 'doctors.html'
 
@@ -460,11 +450,9 @@ def details():
                     csv_filename = fname
                     break
         csv_path = os.path.join(base_dir, 'data', 'mca', subfolder, csv_filename)
-<<<<<<< HEAD
     elif dept_filter == 'MTECH':
         csv_filename = f'cap{round_filter}.csv'
         csv_path = os.path.join(base_dir, 'data', 'MTECH_ME', csv_filename)
-=======
     elif dept_filter == 'MBA':
         if location_filter == 'AI':
             subfolder = 'AI'
@@ -495,7 +483,6 @@ def details():
                         csv_filename = fname
                         break
         csv_path = os.path.join(search_dir, csv_filename)
->>>>>>> daafe13 (bca)
     else:
         csv_filename = f'polytechnic_cutoff_data_cap_{round_filter}.csv'
         csv_path = os.path.join(base_dir, 'data', 'polytechnic', csv_filename)
